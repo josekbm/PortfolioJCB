@@ -60,7 +60,7 @@ export const info = {
             label: 'github'
         },
         {
-            link: "www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980",
+            link: "https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980",
             icon: "fa fa-linkedin",
             label: 'linkedin'
         },
