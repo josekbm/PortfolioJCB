@@ -8,7 +8,7 @@ import {info} from "../info/Info";
 const links = [
     {
         name: 'Home',
-        to: '/',
+        to: '/home',
         active: 'home'
     },
     {
@@ -19,7 +19,7 @@ const links = [
     {
         name: info.initials,
         type: 'initials',
-        to: '/',
+        to: '/home',
         active: 'home'
     },
     {
