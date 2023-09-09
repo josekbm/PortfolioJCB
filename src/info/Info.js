@@ -115,11 +115,11 @@ export const info = {
             source: "https://github.com/josekbm/Hotel-Miranda-HTML",
             image: mock3
         },
-        /*{
+        {
             title: "Miranda's Dashboard",
-            live: "",
+            live: "https://josekbm.github.io/dashboard-miranda/",
             source: "https://github.com/josekbm/dashboard-miranda",
             image: mock4
-        }*/
+        }
     ]
 }
