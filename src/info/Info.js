@@ -3,10 +3,8 @@ import mock1 from "../img/mock1.png"
 import mock2 from "../img/mock2.png"
 import mock3 from "../img/mock3.png"
 import mock4 from "../img/mock4.png"
+import mock5 from "../img/mock5.png"
 
-
-/* Hi there! Thanks for checking out my portfolio template. Be sure to read the comments to get a better understanding of
-how to make this template work best for you! */
 
 export let colors = ["rgb(0,255,164)", "rgb(166,104,255)"];
 /*
@@ -120,6 +118,11 @@ export const info = {
             live: "https://josekbm.github.io/dashboard-miranda/",
             source: "https://github.com/josekbm/dashboard-miranda",
             image: mock4
+        },
+        {
+            title: "Miranda's Backend",
+            source: "https://github.com/josekbm/Miranda-Backend",
+            image: mock5
         }
     ]
 }
