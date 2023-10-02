@@ -1,18 +1,19 @@
 {
   "files": {
     "main.css": "/PortfolioJCB/static/css/main.449becba.css",
-    "main.js": "/PortfolioJCB/static/js/main.5df36783.js",
+    "main.js": "/PortfolioJCB/static/js/main.fd6053a7.js",
     "static/media/self.png": "/PortfolioJCB/static/media/self.c09dbaf1cbae959ce2e5.png",
     "static/media/mock2.png": "/PortfolioJCB/static/media/mock2.ffa35130e1547d30f7c3.png",
     "static/media/mock3.png": "/PortfolioJCB/static/media/mock3.339f9ea3a1c9cda027ad.png",
     "static/media/mock1.png": "/PortfolioJCB/static/media/mock1.2cd94921afacbff14b3f.png",
+    "static/media/mock5.png": "/PortfolioJCB/static/media/mock5.e129ca1d9b007b926403.png",
     "static/media/mock4.png": "/PortfolioJCB/static/media/mock4.c5f28bc71fd09d396b08.png",
     "index.html": "/PortfolioJCB/index.html",
     "main.449becba.css.map": "/PortfolioJCB/static/css/main.449becba.css.map",
-    "main.5df36783.js.map": "/PortfolioJCB/static/js/main.5df36783.js.map"
+    "main.fd6053a7.js.map": "/PortfolioJCB/static/js/main.fd6053a7.js.map"
   },
   "entrypoints": [
     "static/css/main.449becba.css",
-    "static/js/main.5df36783.js"
+    "static/js/main.fd6053a7.js"
   ]
 }
