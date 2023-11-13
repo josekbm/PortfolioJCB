@@ -4,6 +4,7 @@ import mock2 from "../img/mock2.png"
 import mock3 from "../img/mock3.png"
 import mock4 from "../img/mock4.png"
 import mock5 from "../img/mock5.png"
+import mock6 from "../img/mock6.png"
 
 
 export let colors = ["rgb(0,255,164)", "rgb(166,104,255)"];
@@ -123,6 +124,17 @@ export const info = {
             title: "Miranda's Backend",
             source: "https://github.com/josekbm/Miranda-Backend",
             image: mock5
+        },
+        {
+            title: "API REST in .Net",
+            source: "https://github.com/josekbm/PruebaM",
+            image: mock5
+        },
+        {
+            title: "Gamer's Nest",
+            live: "https://josekbm.github.io/gamers_nest/",
+            source: "https://github.com/josekbm/gamers_nest",
+            image: mock6
         }
     ]
 }
