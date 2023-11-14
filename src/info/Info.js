@@ -132,7 +132,7 @@ export const info = {
         },
         {
             title: "Gamer's Nest",
-            live: "http://gamers-nest.s3-website.eu-west-3.amazonaws.com/",
+            live: "https://josekbm.github.io/gamers_nest/",
             source: "https://github.com/josekbm/gamers_nest",
             image: mock6
         }
