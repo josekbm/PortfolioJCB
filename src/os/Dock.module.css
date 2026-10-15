@@ -1,0 +1,123 @@
+.wrap {
+  position: fixed;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  z-index: 150;
+}
+
+.dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  border-radius: 18px;
+  background: var(--window-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  pointer-events: auto;
+}
+
+.app {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  color: var(--text-muted);
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.app:hover {
+  transform: translateY(-6px) scale(1.06);
+  color: var(--text);
+  background: var(--bg-soft);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.running {
+  color: var(--text);
+}
+
+.focused {
+  color: var(--accent);
+}
+
+.dot {
+  position: absolute;
+  bottom: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.running .dot {
+  opacity: 0.9;
+}
+
+.tooltip {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.app:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.sep {
+  width: 1px;
+  height: 30px;
+  background: var(--border);
+  margin: 0 0.25rem;
+  align-self: center;
+}
+
+.credit {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+@media (max-width: 560px) {
+  .app {
+    width: 44px;
+    height: 44px;
+  }
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .tooltip {
+    display: none;
+  }
+}

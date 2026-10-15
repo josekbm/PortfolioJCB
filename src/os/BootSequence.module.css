@@ -1,0 +1,50 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #05070a;
+  color: var(--terminal-text);
+}
+
+.box {
+  width: min(620px, 90vw);
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  line-height: 1.9;
+}
+
+.box p {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hl {
+  color: var(--accent);
+}
+
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  background: var(--accent);
+  margin-top: 0.4rem;
+  animation: blink 0.9s steps(1) infinite;
+}
+
+.hint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  animation: blink 2s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

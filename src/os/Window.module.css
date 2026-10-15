@@ -1,0 +1,135 @@
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: var(--window-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: pop 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.window.focused {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 0.75rem;
+  background: var(--titlebar);
+  border-bottom: 1px solid var(--border);
+  cursor: default;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.c {
+  display: grid;
+  place-items: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  color: transparent;
+  transition: filter 150ms ease;
+}
+
+.c svg {
+  width: 8px;
+  height: 8px;
+}
+
+.controls:hover .c {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.close {
+  background: var(--red);
+}
+
+.min {
+  background: var(--amber);
+}
+
+.max {
+  background: var(--green);
+}
+
+.c:hover {
+  filter: brightness(1.1);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.titleIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+
+.maximized {
+  inset: var(--menu-height) 0 var(--dock-height) 0 !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0;
+}
+
+.minimized {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.94) translateY(24px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+@media (max-width: 720px) {
+  .window {
+    inset: var(--menu-height) 0 calc(var(--dock-height) + 0.5rem) 0 !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
