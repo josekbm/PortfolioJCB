@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "3.0.0",
   "private": true,
-  "homepage": "https://josekbm.github.io/PortfolioJCB",
+  "homepage": "https://blancodev.es",
   "type": "module",
   "scripts": {
     "dev": "vite",
