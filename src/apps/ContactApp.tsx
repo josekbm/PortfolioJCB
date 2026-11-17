@@ -1,6 +1,14 @@
 import styles from './apps.module.css';
 import { info } from '../data/info';
-import { GithubIcon, LinkedinIcon, MailIcon, DocIcon, ExternalLinkIcon } from '../components/Icons';
+import { useOS } from '../os/OSProvider';
+import {
+  ArrowRightIcon,
+  DocIcon,
+  ExternalLinkIcon,
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+} from '../components/Icons';
 
 const ICONS = {
   github: GithubIcon,
@@ -10,8 +18,15 @@ const ICONS = {
 } as const;
 
 export default function ContactApp() {
+  const { openApp } = useOS();
+
   return (
     <div className={`${styles.content} ${styles.scroll}`}>
+      <span className={styles.contactStatus}>
+        <span className={styles.pulse} />
+        {info.services.availability}
+      </span>
+
       <div className={styles.contactList}>
         {info.socials.map((social) => {
           const Icon = ICONS[social.icon];
@@ -44,18 +59,22 @@ export default function ContactApp() {
         })}
       </div>
 
-      <a className={styles.cta} href={`mailto:${info.email}`}>
-        <MailIcon style={{ width: 18, height: 18 }} /> Say hello
-      </a>
-      <span style={{ marginLeft: '0.75rem' }}>
-        <a
-          className={styles.cardLink}
-          href={`mailto:${info.email}`}
-          style={{ verticalAlign: 'middle' }}
-        >
-          <ExternalLinkIcon /> {info.email}
+      <div className={styles.contactActions}>
+        <a className={styles.cta} href={`mailto:${info.email}`}>
+          <MailIcon style={{ width: 18, height: 18 }} /> Say hello
         </a>
-      </span>
+        <button
+          className={styles.ghostBtn}
+          onClick={() => openApp('services')}
+          type="button"
+        >
+          View services <ArrowRightIcon />
+        </button>
+      </div>
+
+      <a className={styles.contactEmail} href={`mailto:${info.email}`}>
+        <ExternalLinkIcon /> {info.email}
+      </a>
     </div>
   );
 }

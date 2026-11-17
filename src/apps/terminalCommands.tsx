@@ -30,7 +30,7 @@ const muted = (text: string) => <Line className={`${styles.line} ${styles.muted}
 const err = (text: string) => <Line className={`${styles.line} ${styles.err}`}>{text}</Line>;
 const text = (t: string) => <Line>{t}</Line>;
 
-const APPS = ['about', 'skills', 'projects', 'contact', 'terminal'] as const;
+const APPS = ['about', 'skills', 'services', 'projects', 'contact', 'terminal'] as const;
 
 const COMMANDS: Record<string, { desc: string; run: Handler }> = {
   help: {
@@ -81,6 +81,32 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
       ),
     }),
   },
+  services: {
+    desc: 'what i can build for you',
+    run: () => ({
+      output: (
+        <>
+          {ok(info.services.availability.toLowerCase())}
+          {text(info.services.intro)}
+          {ok('services:')}
+          {info.services.services.map((service) => (
+            <Line key={service.title}>
+              <span className={styles.ok}>·</span> {service.title}{' '}
+              <span className={styles.muted}>— {service.tagline}</span>
+            </Line>
+          ))}
+          {muted('run `open services` for the full offer')}
+        </>
+      ),
+    }),
+  },
+  hire: {
+    desc: 'shortcut to services',
+    run: (_, ctx) => {
+      ctx.openApp('services');
+      return { output: ok('opened services — let’s build something') };
+    },
+  },
   projects: {
     desc: 'list my projects',
     run: () => ({
@@ -129,13 +155,13 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
     run: () => ({
       output: (
         <>
-          {text('about.txt   skills/   projects/   contact   cv.pdf')}
+          {text('about.txt   skills/   services/   projects/   contact   cv.pdf')}
         </>
       ),
     }),
   },
   cat: {
-    desc: 'print a file: cat <about|skills|projects|contact|cv>',
+    desc: 'print a file: cat <about|skills|services|projects|contact|cv>',
     run: (args) => {
       const file = (args[0] || '').replace(/\.(txt|pdf)$/, '');
       if (file === 'about') return { output: <Line>{info.bio}</Line> };
@@ -148,6 +174,15 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
             </>
           ),
         };
+      if (file === 'services')
+        return {
+          output: (
+            <>
+              {text(info.services.intro)}
+              {info.services.services.map((service) => text(`${service.title}: ${service.tagline}`))}
+            </>
+          ),
+        };
       if (file === 'projects')
         return { output: <>{info.projects.map((p) => text(`${p.title}`))}</> };
       if (file === 'contact') return { output: text(info.email) };
@@ -156,14 +191,14 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
     },
   },
   open: {
-    desc: 'open an app: open <about|skills|projects|contact|terminal>',
+    desc: 'open an app: open <about|skills|services|projects|contact|terminal>',
     run: (args, ctx) => {
       const target = (args[0] || '').toLowerCase();
       if ((APPS as readonly string[]).includes(target)) {
         ctx.openApp(target as AppId);
         return { output: ok(`opened ${target}`) };
       }
-      return { output: err(`open: unknown app '${target}' — try about, skills, projects, contact, terminal`) };
+      return { output: err(`open: unknown app '${target}' — try ${APPS.join(', ')}`) };
     },
   },
   theme: {
@@ -266,9 +301,10 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
   },
   sudo: {
     desc: 'try your luck',
-    run: (args) => {
+    run: (args, ctx) => {
       if (args.join(' ') === 'hire me') {
-        return { output: ok('permission granted — email jcblanco.dev@gmail.com 🙂') };
+        ctx.openApp('services');
+        return { output: ok('permission granted — opening services… 🙂') };
       }
       return { output: err('josecarlos is not in the sudoers file. This incident will be reported.') };
     },

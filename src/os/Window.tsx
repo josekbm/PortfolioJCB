@@ -13,8 +13,9 @@ const DEFAULT: Record<AppId, { w: number; h: number; dx: number; dy: number }> =
   terminal: { w: 680, h: 430, dx: 60, dy: 30 },
   about: { w: 640, h: 600, dx: -380, dy: 10 },
   skills: { w: 560, h: 540, dx: -320, dy: 60 },
+  services: { w: 780, h: 620, dx: -140, dy: 10 },
   projects: { w: 920, h: 640, dx: 0, dy: -10 },
-  contact: { w: 560, h: 480, dx: -220, dy: -40 },
+  contact: { w: 580, h: 560, dx: -220, dy: -40 },
 };
 
 function isDesktop() {

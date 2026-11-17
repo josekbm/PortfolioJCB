@@ -31,6 +31,7 @@ const initialState: Windows = {
   terminal: { open: true, minimized: false, focused: true, z: 2 },
   about: { open: true, minimized: false, focused: false, z: 1 },
   skills: { open: false, minimized: false, focused: false, z: 0 },
+  services: { open: false, minimized: false, focused: false, z: 0 },
   projects: { open: false, minimized: false, focused: false, z: 0 },
   contact: { open: false, minimized: false, focused: false, z: 0 },
 };

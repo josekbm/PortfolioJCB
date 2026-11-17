@@ -32,6 +32,9 @@ export default function Terminal({ theme, onToggleTheme, onReboot }: AppProps) {
             <div className={styles.line}>
               type <span className={styles.ok}>help</span> to see what you can do.
             </div>
+            <div className={styles.line}>
+              looking to hire? run <span className={styles.ok}>open services</span>.
+            </div>
           </>
         ),
       },

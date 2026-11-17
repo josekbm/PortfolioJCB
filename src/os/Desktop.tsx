@@ -6,6 +6,7 @@ import Window from './Window';
 import Terminal from '../apps/Terminal';
 import AboutApp from '../apps/AboutApp';
 import SkillsApp from '../apps/SkillsApp';
+import ServicesApp from '../apps/ServicesApp';
 import ProjectsApp from '../apps/ProjectsApp';
 import ContactApp from '../apps/ContactApp';
 import type { AppProps } from '../apps/types';
@@ -14,6 +15,7 @@ const CONTENT: Record<AppId, ComponentType<AppProps>> = {
   terminal: Terminal,
   about: AboutApp,
   skills: SkillsApp,
+  services: ServicesApp,
   projects: ProjectsApp,
   contact: ContactApp,
 };

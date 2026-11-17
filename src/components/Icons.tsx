@@ -61,6 +61,62 @@ export function CodeIcon(props: IconProps) {
   );
 }
 
+export function BriefcaseIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-10-2h4v2h-4V5Zm10 13H4v-5h5v2h6v-2h5v5Z" />
+    </svg>
+  );
+}
+
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M4 11h12.17l-5.59-5.59L12 4l8 8-8 8-1.42-1.41L16.17 13H4v-2Z" />
+    </svg>
+  );
+}
+
+export function ArrowLeftIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2Z" />
+    </svg>
+  );
+}
+
+export function CheckIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M9 16.17 5.53 12.7 4.12 14.12 9 19l11-11-1.41-1.41L9 16.17Z" />
+    </svg>
+  );
+}
+
+export function SparklesIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="m12 2 1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Zm7 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9L19 13ZM5 14l.7 2.1 2.1.7-2.1.7L5 19.6l-.7-2.1-2.1-.7 2.1-.7L5 14Z" />
+    </svg>
+  );
+}
+
+export function ServerIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M4 3h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 10h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2Zm2-6h2v2H6V7Zm0 10h2v2H6v-2Z" />
+    </svg>
+  );
+}
+
+export function ContainerIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M3 8h18v11H3V8Zm2-3h2v2H5V5Zm4 0h2v2H9V5Zm4 0h2v2h-2V5Zm4 0h2v2h-2V5ZM6 11h2v2H6v-2Zm4 0h2v2h-2v-2Zm4 0h2v2h-2v-2Zm4 0h2v2h-2v-2Zm-8 4h2v2h-2v-2Z" />
+    </svg>
+  );
+}
+
 export function SunIcon(props: IconProps) {
   return (
     <svg {...base(props)}>
