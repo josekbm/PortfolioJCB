@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Logo from '../components/Logo';
 import styles from './BootSequence.module.css';
 
 interface BootSequenceProps {
@@ -52,6 +53,7 @@ export default function BootSequence({ onDone }: BootSequenceProps) {
 
   return (
     <div className={styles.screen}>
+      <Logo className={styles.logo} />
       <div className={styles.box}>
         {LINES.slice(0, count).map((line, i) => (
           <p key={i} className={i === LINES.length - 2 ? styles.hl : ''}>

@@ -11,6 +11,12 @@
   color: var(--terminal-text);
 }
 
+.logo {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 10px 28px rgba(44, 234, 163, 0.18));
+}
+
 .box {
   width: min(620px, 90vw);
   font-family: var(--font-mono);

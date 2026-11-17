@@ -1,6 +1,7 @@
 import styles from './MenuBar.module.css';
 import { useClock } from './useClock';
-import { MoonIcon, SunIcon, PowerIcon, TerminalIcon } from '../components/Icons';
+import { MoonIcon, SunIcon, PowerIcon } from '../components/Icons';
+import Logo from '../components/Logo';
 import { info } from '../data/info';
 import type { Theme } from '../hooks/useTheme';
 
@@ -25,7 +26,7 @@ export default function MenuBar({ theme, onToggleTheme, onReboot }: MenuBarProps
     <header className={styles.bar}>
       <div className={styles.left}>
         <span className={styles.logo}>
-          <TerminalIcon />
+          <Logo />
         </span>
         <span className={styles.brand}>jose@jcb.dev</span>
         <span className={styles.user}>— {info.firstName.toLowerCase()}</span>
