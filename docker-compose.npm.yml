@@ -1,0 +1,14 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-jcb:latest
+    container_name: portfolio-jcb
+    restart: unless-stopped
+    networks:
+      - npm_net
+
+networks:
+  npm_net:
+    external: true

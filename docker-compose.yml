@@ -1,0 +1,10 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-jcb:latest
+    container_name: portfolio-jcb
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8099}:80"
