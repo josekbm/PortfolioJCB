@@ -80,14 +80,16 @@ function ProjectLinks({ project }: { project: Project }) {
           <ExternalLinkIcon /> {ui.projects.live}
         </a>
       )}
-      <a
-        className={styles.cardLink}
-        href={project.source}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <CodeIcon /> {ui.projects.source}
-      </a>
+      {project.source && (
+        <a
+          className={styles.cardLink}
+          href={project.source}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CodeIcon /> {ui.projects.source}
+        </a>
+      )}
     </div>
   );
 }
@@ -221,6 +223,11 @@ function ProjectCard({ project, onSelect }: CardProps) {
               src={project.image}
               alt={ui.projects.imageAlt(project.title)}
               loading="lazy"
+              style={
+                project.imagePosition
+                  ? { objectPosition: project.imagePosition }
+                  : undefined
+              }
             />
             <span className={styles.shotOverlay}>
               <span>{ui.projects.openCaseStudy}</span>

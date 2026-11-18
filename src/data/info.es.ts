@@ -4,6 +4,7 @@ import mock2 from '../img/mock2.webp';
 import mock3 from '../img/mock3.webp';
 import mock4 from '../img/mock4.webp';
 import mock6 from '../img/mock6.webp';
+import mock7 from '../img/mock7.webp';
 import type { Info } from './info';
 import { CV_URL } from './links';
 
@@ -63,6 +64,24 @@ export const infoEs: Info = {
   ],
   projects: [
     {
+      title: 'JM Sánchez · Cortador de Jamón',
+      description:
+        'Una web de una sola página para un cortador profesional de jamón en Sevilla, con servicios, presupuesto a medida, galería y contacto por WhatsApp.',
+      category: 'Landing',
+      role: 'Diseño y desarrollo',
+      highlights: [
+        'Diseño editorial de una página con identidad propia en negro y oro',
+        'Astro, CSS artesanal y cero frameworks de cliente',
+        'Galería accesible, presupuesto por WhatsApp y SEO estructurado',
+        'Despliegue con Docker, Nginx Proxy Manager y HTTPS',
+      ],
+      tech: ['Astro', 'TypeScript', 'CSS'],
+      featured: true,
+      image: mock7,
+      imagePosition: '20% center',
+      live: 'https://jmsanchez-cortadordejamon.es',
+    },
+    {
       title: "Gamer's Nest",
       description:
         'Un hub para que los jugadores descubran, reseñen y compartan sus títulos favoritos.',
@@ -74,7 +93,6 @@ export const infoEs: Info = {
         'Despliegue estático en GitHub Pages',
       ],
       tech: ['React', 'TypeScript', 'CSS Modules'],
-      featured: true,
       image: mock6,
       live: 'https://josekbm.github.io/gamers_nest/',
       source: 'https://github.com/josekbm/gamers_nest',

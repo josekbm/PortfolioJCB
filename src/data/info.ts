@@ -4,6 +4,7 @@ import mock2 from '../img/mock2.webp';
 import mock3 from '../img/mock3.webp';
 import mock4 from '../img/mock4.webp';
 import mock6 from '../img/mock6.webp';
+import mock7 from '../img/mock7.webp';
 import { CV_URL } from './links';
 
 export interface Social {
@@ -28,9 +29,10 @@ export interface Project {
   highlights: string[];
   tech: string[];
   image?: string;
+  imagePosition?: string;
   code?: CodePreview;
   live?: string;
-  source: string;
+  source?: string;
   featured?: boolean;
 }
 
@@ -172,6 +174,24 @@ export const info: Info = {
   ],
   projects: [
     {
+      title: 'JM Sánchez · Cortador de Jamón',
+      description:
+        'A one-page site for a professional ham cutter in Seville, with services, a custom quote flow, gallery and WhatsApp contact.',
+      category: 'Landing',
+      role: 'Design & development',
+      highlights: [
+        'Editorial one-page design with a custom black and gold identity',
+        'Astro, handcrafted CSS and no client-side frameworks',
+        'Accessible gallery lightbox, WhatsApp quote flow and structured SEO',
+        'Docker deployment behind Nginx Proxy Manager with HTTPS',
+      ],
+      tech: ['Astro', 'TypeScript', 'CSS'],
+      featured: true,
+      image: mock7,
+      imagePosition: '20% center',
+      live: 'https://jmsanchez-cortadordejamon.es',
+    },
+    {
       title: "Gamer's Nest",
       description:
         'A community hub for gamers to discover, review and share their favorite titles.',
@@ -183,7 +203,6 @@ export const info: Info = {
         'Static deployment on GitHub Pages',
       ],
       tech: ['React', 'TypeScript', 'CSS Modules'],
-      featured: true,
       image: mock6,
       live: 'https://josekbm.github.io/gamers_nest/',
       source: 'https://github.com/josekbm/gamers_nest',
