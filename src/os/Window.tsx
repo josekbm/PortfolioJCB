@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import styles from './Window.module.css';
 import type { AppDef, AppId } from './apps';
 import { useOS } from './OSProvider';
+import { useI18n } from '../i18n/LanguageProvider';
 import { MinusIcon, SquareIcon, CloseIcon } from '../components/Icons';
 
 interface WindowProps {
@@ -31,6 +32,7 @@ function clamp(v: number, min: number, max: number) {
 
 export default function Window({ app, children }: WindowProps) {
   const { windows, closeApp, minimizeApp, focusApp } = useOS();
+  const { ui } = useI18n();
   const state = windows[app.id];
   const [desktop, setDesktop] = useState(isDesktop);
   const [maximized, setMaximized] = useState(false);
@@ -98,28 +100,28 @@ export default function Window({ app, children }: WindowProps) {
           <button
             className={`${styles.c} ${styles.close}`}
             onClick={() => closeApp(app.id)}
-            aria-label="Close"
+            aria-label={ui.window.close}
           >
             <CloseIcon />
           </button>
           <button
             className={`${styles.c} ${styles.min}`}
             onClick={() => minimizeApp(app.id)}
-            aria-label="Minimize"
+            aria-label={ui.window.minimize}
           >
             <MinusIcon />
           </button>
           <button
             className={`${styles.c} ${styles.max}`}
             onClick={() => setMaximized((m) => !m)}
-            aria-label="Maximize"
+            aria-label={ui.window.maximize}
           >
             <SquareIcon />
           </button>
         </div>
         <div className={styles.title}>
           <app.Icon className={styles.titleIcon} />
-          <span>{app.title}</span>
+          <span>{ui.windowTitles[app.titleKey]}</span>
         </div>
         <div className={styles.spacer} />
       </header>

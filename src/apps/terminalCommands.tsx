@@ -1,9 +1,12 @@
 import type { ReactNode } from 'react';
 import styles from './Terminal.module.css';
-import { info } from '../data/info';
-import { ASCII_JCB, NEOFETCH_ROWS } from './neofetch';
-import type { AppId } from '../os/apps';
+import type { Info } from '../data/info';
+import type { UI } from '../i18n/ui';
+import type { Lang } from '../i18n/types';
+import { CV_URL } from '../data/links';
+import { ASCII_JCB } from './neofetch';
 import type { Theme } from '../hooks/useTheme';
+import type { AppId } from '../os/apps';
 
 export interface CommandContext {
   openApp: (id: AppId) => void;
@@ -12,6 +15,10 @@ export interface CommandContext {
   theme: Theme;
   onReboot: () => void;
   history: string[];
+  info: Info;
+  ui: UI;
+  lang: Lang;
+  locale: string;
 }
 
 interface CommandResult {
@@ -32,17 +39,18 @@ const text = (t: string) => <Line>{t}</Line>;
 
 const APPS = ['about', 'skills', 'services', 'projects', 'contact', 'terminal'] as const;
 
-const COMMANDS: Record<string, { desc: string; run: Handler }> = {
+const COMMANDS: Record<string, { run: Handler }> = {
   help: {
-    desc: 'show available commands',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
-          {text('available commands:')}
-          {Object.entries(COMMANDS).map(([name, c]) => (
+          {text(ctx.ui.terminal.helpTitle)}
+          {Object.keys(COMMANDS).map((name) => (
             <Line key={name}>
               <span className={styles.ok}>{name.padEnd(12)}</span>
-              <span className={styles.muted}>{c.desc}</span>
+              <span className={styles.muted}>
+                {ctx.ui.terminal.descriptions[name] ?? name}
+              </span>
             </Line>
           ))}
         </>
@@ -50,127 +58,123 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
     }),
   },
   whoami: {
-    desc: 'who am i?',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
           {text('josecarlos')}
-          {text(info.role)}
+          {text(ctx.info.role)}
         </>
       ),
     }),
   },
   about: {
-    desc: 'a short bio',
-    run: () => ({ output: <Line>{info.bio}</Line> }),
+    run: (_args, ctx) => ({ output: <Line>{ctx.info.bio}</Line> }),
   },
   bio: {
-    desc: 'alias of about',
-    run: (_, ctx) => COMMANDS.about.run([], ctx),
+    run: (_args, ctx) => COMMANDS.about.run([], ctx),
   },
   skills: {
-    desc: 'list my technical skills',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
-          {ok('proficient:')}
-          {text(info.skills.proficientWith.join(' · '))}
-          {ok('exposed to:')}
-          {text(info.skills.exposedTo.join(' · '))}
+          {ok(ctx.ui.terminal.proficient)}
+          {text(ctx.info.skills.proficientWith.join(' · '))}
+          {ok(ctx.ui.terminal.exposed)}
+          {text(ctx.info.skills.exposedTo.join(' · '))}
         </>
       ),
     }),
   },
   services: {
-    desc: 'what i can build for you',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
-          {ok(info.services.availability.toLowerCase())}
-          {text(info.services.intro)}
-          {ok('services:')}
-          {info.services.services.map((service) => (
+          {ok(ctx.info.services.availability.toLowerCase())}
+          {text(ctx.info.services.intro)}
+          {ok(`${ctx.ui.services.servicesTitle.replace('$ ', '')}:`)}
+          {ctx.info.services.services.map((service) => (
             <Line key={service.title}>
               <span className={styles.ok}>·</span> {service.title}{' '}
               <span className={styles.muted}>— {service.tagline}</span>
             </Line>
           ))}
-          {muted('run `open services` for the full offer')}
+          {muted(ctx.ui.terminal.openServicesHint)}
         </>
       ),
     }),
   },
   hire: {
-    desc: 'shortcut to services',
-    run: (_, ctx) => {
+    run: (_args, ctx) => {
       ctx.openApp('services');
-      return { output: ok('opened services — let’s build something') };
+      return { output: ok(ctx.ui.terminal.servicesOpened) };
     },
   },
   projects: {
-    desc: 'list my projects',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
-          {info.projects.map((p, i) => (
-            <Line key={p.title}>
-              <span className={styles.ok}>{(i + 1).toString().padStart(2, '0')}.</span>{' '}
-              {p.title} <span className={styles.muted}>— {p.tech.join(', ')}</span>
+          {ctx.info.projects.map((project, index) => (
+            <Line key={project.title}>
+              <span className={styles.ok}>
+                {(index + 1).toString().padStart(2, '0')}.
+              </span>{' '}
+              {project.title}{' '}
+              <span className={styles.muted}>— {project.tech.join(', ')}</span>
             </Line>
           ))}
-          {muted('run `open projects` to see them')}
+          {muted(ctx.ui.terminal.openProjectsHint)}
         </>
       ),
     }),
   },
   contact: {
-    desc: 'ways to reach me',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
-          {text(`${info.email}`)}
-          {text('github  https://github.com/josekbm')}
-          {text('linkedin  https://linkedin.com/in/jose-carlos-blanco-mira-59ab5980')}
-          {muted('run `open contact` to see all')}
+          {text(ctx.info.email)}
+          {ctx.info.socials
+            .filter((social) => social.icon === 'github' || social.icon === 'linkedin')
+            .map((social) => (
+              <Line key={social.label}>
+                <span className={styles.muted}>{social.label.toLowerCase()}</span>{' '}
+                {social.link}
+              </Line>
+            ))}
+          {muted(ctx.ui.terminal.openContactHint)}
         </>
       ),
     }),
   },
   socials: {
-    desc: 'alias of contact',
-    run: (_, ctx) => COMMANDS.contact.run([], ctx),
+    run: (_args, ctx) => COMMANDS.contact.run([], ctx),
   },
   cv: {
-    desc: 'download my CV',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <Line>
-          downloading… <a className={styles.link} href="./CV_Jose_Carlos_Blanco.pdf" target="_blank" rel="noreferrer">CV_Jose_Carlos_Blanco.pdf</a>
+          {ctx.ui.terminal.downloading}{' '}
+          <a className={styles.link} href={CV_URL} target="_blank" rel="noreferrer">
+            CV_Jose_Carlos_Blanco.pdf
+          </a>
         </Line>
       ),
     }),
   },
   ls: {
-    desc: 'list files',
     run: () => ({
-      output: (
-        <>
-          {text('about.txt   skills/   services/   projects/   contact   cv.pdf')}
-        </>
-      ),
+      output: text('about.txt   skills/   services/   projects/   contact   cv.pdf'),
     }),
   },
   cat: {
-    desc: 'print a file: cat <about|skills|services|projects|contact|cv>',
-    run: (args) => {
+    run: (args, ctx) => {
       const file = (args[0] || '').replace(/\.(txt|pdf)$/, '');
-      if (file === 'about') return { output: <Line>{info.bio}</Line> };
+      if (file === 'about') return { output: <Line>{ctx.info.bio}</Line> };
       if (file === 'skills')
         return {
           output: (
             <>
-              {text(info.skills.proficientWith.join(', '))}
-              {text(info.skills.exposedTo.join(', '))}
+              {text(ctx.info.skills.proficientWith.join(', '))}
+              {text(ctx.info.skills.exposedTo.join(', '))}
             </>
           ),
         };
@@ -178,47 +182,57 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
         return {
           output: (
             <>
-              {text(info.services.intro)}
-              {info.services.services.map((service) => text(`${service.title}: ${service.tagline}`))}
+              {text(ctx.info.services.intro)}
+              {ctx.info.services.services.map((service) =>
+                text(`${service.title}: ${service.tagline}`),
+              )}
             </>
           ),
         };
       if (file === 'projects')
-        return { output: <>{info.projects.map((p) => text(`${p.title}`))}</> };
-      if (file === 'contact') return { output: text(info.email) };
-      if (file === 'cv') return { output: text('it\'s a binary file — run `cv` to download it') };
-      return { output: err(`cat: ${args[0] || ''}: no such file or directory`) };
+        return {
+          output: <>{ctx.info.projects.map((project) => text(project.title))}</>,
+        };
+      if (file === 'contact') return { output: text(ctx.info.email) };
+      if (file === 'cv')
+        return { output: text(ctx.ui.terminal.binaryFile) };
+      return { output: err(ctx.ui.terminal.noFile(args[0] || '')) };
     },
   },
   open: {
-    desc: 'open an app: open <about|skills|services|projects|contact|terminal>',
     run: (args, ctx) => {
       const target = (args[0] || '').toLowerCase();
       if ((APPS as readonly string[]).includes(target)) {
         ctx.openApp(target as AppId);
-        return { output: ok(`opened ${target}`) };
+        const label =
+          ctx.ui.apps[target as keyof typeof ctx.ui.apps] ?? target;
+        return { output: ok(ctx.ui.terminal.opened(label)) };
       }
-      return { output: err(`open: unknown app '${target}' — try ${APPS.join(', ')}`) };
+      return {
+        output: err(ctx.ui.terminal.unknownApp(target, APPS.join(', '))),
+      };
     },
   },
   theme: {
-    desc: 'toggle theme, or theme <dark|light>',
     run: (args, ctx) => {
       const arg = args[0]?.toLowerCase();
       if (!arg || arg === 'toggle') {
         ctx.onToggleTheme();
-        return { output: ok(`theme is now ${ctx.theme === 'dark' ? 'light' : 'dark'}`) };
+        return {
+          output: ok(
+            ctx.ui.terminal.themeNow(ctx.theme === 'dark' ? 'light' : 'dark'),
+          ),
+        };
       }
       if (arg === 'dark' || arg === 'light') {
         if (arg !== ctx.theme) ctx.onToggleTheme();
-        return { output: ok(`theme is now ${arg}`) };
+        return { output: ok(ctx.ui.terminal.themeNow(arg)) };
       }
-      return { output: err('usage: theme [dark|light|toggle]') };
+      return { output: err(ctx.ui.terminal.themeUsage) };
     },
   },
   neofetch: {
-    desc: 'system info',
-    run: () => ({
+    run: (_args, ctx) => ({
       output: (
         <>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -226,10 +240,10 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
               {ASCII_JCB.join('\n')}
             </pre>
             <div>
-              {NEOFETCH_ROWS.map(([k, v]) => (
-                <Line key={k}>
-                  <span className={styles.ok}>{k.padEnd(10)}</span>
-                  <span className={styles.muted}>{v}</span>
+              {ctx.ui.neofetch.rows.map(([key, value]) => (
+                <Line key={key}>
+                  <span className={styles.ok}>{key.padEnd(10)}</span>
+                  <span className={styles.muted}>{value}</span>
                 </Line>
               ))}
             </div>
@@ -239,74 +253,76 @@ const COMMANDS: Record<string, { desc: string; run: Handler }> = {
     }),
   },
   echo: {
-    desc: 'echo text',
     run: (args) => ({ output: text(args.join(' ') || '') }),
   },
   date: {
-    desc: 'current date and time',
-    run: () => ({ output: text(new Date().toString()) }),
+    run: (_args, ctx) => ({ output: text(new Date().toLocaleString(ctx.locale)) }),
   },
   clear: {
-    desc: 'clear the terminal',
     run: () => ({ output: null, clear: true }),
   },
   history: {
-    desc: 'recent commands',
     run: (_args, ctx) => ({
-      output: <>{ctx.history.map((c, i) => text(`${(i + 1).toString().padStart(3)}  ${c}`))}</>,
+      output: (
+        <>
+          {ctx.history.map((command, index) =>
+            text(`${(index + 1).toString().padStart(3)}  ${command}`),
+          )}
+        </>
+      ),
     }),
   },
   exit: {
-    desc: 'close the terminal',
     run: (_args, ctx) => {
       ctx.closeApp('terminal');
-      return { output: muted('bye 👋') };
+      return { output: muted(ctx.ui.terminal.bye) };
     },
   },
   reboot: {
-    desc: 'restart the machine',
     run: (_args, ctx) => {
       ctx.onReboot();
-      return { output: muted('rebooting…') };
+      return { output: muted(ctx.ui.terminal.rebooting) };
     },
   },
   github: {
-    desc: 'open my github',
-    run: () => ({
-      output: (
-        <Line>
-          <a className={styles.link} href="https://github.com/josekbm" target="_blank" rel="noreferrer">
-            https://github.com/josekbm
-          </a>
-        </Line>
-      ),
-    }),
+    run: (_args, ctx) => {
+      const link =
+        ctx.info.socials.find((social) => social.icon === 'github')?.link ??
+        'https://github.com/josekbm';
+      return {
+        output: (
+          <Line>
+            <a className={styles.link} href={link} target="_blank" rel="noreferrer">
+              {link}
+            </a>
+          </Line>
+        ),
+      };
+    },
   },
   linkedin: {
-    desc: 'open my linkedin',
-    run: () => ({
-      output: (
-        <Line>
-          <a
-            className={styles.link}
-            href="https://linkedin.com/in/jose-carlos-blanco-mira-59ab5980"
-            target="_blank"
-            rel="noreferrer"
-          >
-            https://linkedin.com/in/jose-carlos-blanco-mira-59ab5980
-          </a>
-        </Line>
-      ),
-    }),
+    run: (_args, ctx) => {
+      const link =
+        ctx.info.socials.find((social) => social.icon === 'linkedin')?.link ??
+        'https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980';
+      return {
+        output: (
+          <Line>
+            <a className={styles.link} href={link} target="_blank" rel="noreferrer">
+              {link}
+            </a>
+          </Line>
+        ),
+      };
+    },
   },
   sudo: {
-    desc: 'try your luck',
     run: (args, ctx) => {
       if (args.join(' ') === 'hire me') {
         ctx.openApp('services');
-        return { output: ok('permission granted — opening services… 🙂') };
+        return { output: ok(ctx.ui.terminal.permissionGranted) };
       }
-      return { output: err('josecarlos is not in the sudoers file. This incident will be reported.') };
+      return { output: err(ctx.ui.terminal.sudoDenied) };
     },
   },
 };
@@ -322,8 +338,8 @@ export function runCommand(raw: string, ctx: CommandContext): CommandResult {
     return {
       output: (
         <>
-          {err(`command not found: ${name}`)}
-          {muted(`try 'help' to see what you can do`)}
+          {err(ctx.ui.terminal.commandNotFound(name))}
+          {muted(ctx.ui.terminal.tryHelp)}
         </>
       ),
     };

@@ -1,6 +1,7 @@
 {
   "name": "Jose Carlos Blanco — Full Stack & Process Automation Engineer",
-  "short_name": "JCB",
+  "short_name": "blancodev",
+  "lang": "en",
   "description": "Portfolio and services of Jose Carlos Blanco: web development, AI integration and process automation.",
   "start_url": "./",
   "scope": "./",

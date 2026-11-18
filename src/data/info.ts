@@ -4,6 +4,7 @@ import mock2 from '../img/mock2.webp';
 import mock3 from '../img/mock3.webp';
 import mock4 from '../img/mock4.webp';
 import mock6 from '../img/mock6.webp';
+import { CV_URL } from './links';
 
 export interface Social {
   label: string;
@@ -130,7 +131,7 @@ export const info: Info = {
     { label: 'Email', link: 'mailto:jcblanco.dev@gmail.com', icon: 'mail' },
     {
       label: 'Curriculum',
-      link: './CV_Jose_Carlos_Blanco.pdf',
+      link: CV_URL,
       icon: 'cv',
     },
   ],

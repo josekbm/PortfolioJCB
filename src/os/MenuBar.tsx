@@ -2,7 +2,7 @@ import styles from './MenuBar.module.css';
 import { useClock } from './useClock';
 import { MoonIcon, SunIcon, PowerIcon } from '../components/Icons';
 import Logo from '../components/Logo';
-import { info } from '../data/info';
+import { useI18n } from '../i18n/LanguageProvider';
 import type { Theme } from '../hooks/useTheme';
 
 interface MenuBarProps {
@@ -17,8 +17,9 @@ function pad(n: number) {
 
 export default function MenuBar({ theme, onToggleTheme, onReboot }: MenuBarProps) {
   const now = useClock();
+  const { info, ui, locale, switchLanguage } = useI18n();
   const date = now
-    .toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short' })
+    .toLocaleDateString(locale, { weekday: 'short', day: '2-digit', month: 'short' })
     .toUpperCase();
   const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
@@ -28,7 +29,9 @@ export default function MenuBar({ theme, onToggleTheme, onReboot }: MenuBarProps
         <span className={styles.logo}>
           <Logo />
         </span>
-        <span className={styles.brand}>jose@jcb.dev</span>
+        <span className={styles.brand}>
+          blanco<span className={styles.brandAccent}>dev</span>
+        </span>
         <span className={styles.user}>— {info.firstName.toLowerCase()}</span>
       </div>
 
@@ -36,18 +39,26 @@ export default function MenuBar({ theme, onToggleTheme, onReboot }: MenuBarProps
         <span className={styles.clock}>{date}</span>
         <span className={styles.clock}>{time}</span>
         <button
+          className={styles.lang}
+          onClick={switchLanguage}
+          aria-label={ui.menu.switchLanguage}
+          title={ui.menu.switchLanguage}
+        >
+          {ui.menu.langShort}
+        </button>
+        <button
           className={styles.btn}
           onClick={onToggleTheme}
-          aria-label="Toggle theme"
-          title="Toggle theme"
+          aria-label={ui.menu.toggleTheme}
+          title={ui.menu.toggleTheme}
         >
           {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
         </button>
         <button
           className={styles.btn}
           onClick={onReboot}
-          aria-label="Reboot"
-          title="Reboot"
+          aria-label={ui.menu.reboot}
+          title={ui.menu.reboot}
         >
           <PowerIcon />
         </button>

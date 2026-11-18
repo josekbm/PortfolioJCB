@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './apps.module.css';
 import {
-  info,
   type CodePreview,
   type Project,
   type ProjectCategory,
 } from '../data/info';
+import { useI18n } from '../i18n/LanguageProvider';
 import { useOS } from '../os/OSProvider';
 import {
   ArrowLeftIcon,
@@ -19,19 +19,12 @@ type Filter = 'All' | ProjectCategory;
 
 const FILTERS: Filter[] = ['All', 'Frontend', 'Backend', 'Landing'];
 
-const LABELS: Record<Filter, string> = {
-  All: 'all',
-  Frontend: 'frontend',
-  Backend: 'backend',
-  Landing: 'landing',
-};
-
-function previewLabel(project: Project) {
+function previewLabel(project: Project, fallback: string) {
   if (project.live) {
     try {
       return new URL(project.live).host.replace(/^www\./, '');
     } catch {
-      return 'live preview';
+      return fallback;
     }
   }
 
@@ -45,6 +38,7 @@ function previewLabel(project: Project) {
 }
 
 function PreviewBar({ project }: { project: Project }) {
+  const { ui } = useI18n();
   const isCode = Boolean(project.code);
 
   return (
@@ -57,15 +51,23 @@ function PreviewBar({ project }: { project: Project }) {
         <i />
         <i />
       </span>
-      <span className={styles.previewUrl}>{previewLabel(project)}</span>
+      <span className={styles.previewUrl}>
+        {previewLabel(project, ui.projects.preview)}
+      </span>
       <span className={styles.previewStatus}>
-        {project.live ? 'live' : isCode ? 'source' : 'preview'}
+        {project.live
+          ? ui.projects.live
+          : isCode
+            ? ui.projects.source
+            : ui.projects.preview}
       </span>
     </div>
   );
 }
 
 function ProjectLinks({ project }: { project: Project }) {
+  const { ui } = useI18n();
+
   return (
     <div className={styles.cardLinks}>
       {project.live && (
@@ -75,7 +77,7 @@ function ProjectLinks({ project }: { project: Project }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ExternalLinkIcon /> live
+          <ExternalLinkIcon /> {ui.projects.live}
         </a>
       )}
       <a
@@ -84,7 +86,7 @@ function ProjectLinks({ project }: { project: Project }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <CodeIcon /> source
+        <CodeIcon /> {ui.projects.source}
       </a>
     </div>
   );
@@ -196,6 +198,8 @@ interface CardProps {
 }
 
 function ProjectCard({ project, onSelect }: CardProps) {
+  const { ui } = useI18n();
+
   return (
     <article className={`${styles.card} ${project.featured ? styles.featured : ''}`}>
       <div className={styles.cardMedia}>
@@ -203,7 +207,7 @@ function ProjectCard({ project, onSelect }: CardProps) {
         {project.code ? (
           <CodePanel
             code={project.code}
-            label={`Open case study: ${project.title}`}
+            label={ui.projects.openCaseStudyAria(project.title)}
             onSelect={() => onSelect(project)}
           />
         ) : project.image ? (
@@ -211,15 +215,15 @@ function ProjectCard({ project, onSelect }: CardProps) {
             className={styles.shot}
             onClick={() => onSelect(project)}
             type="button"
-            aria-label={`Open case study: ${project.title}`}
+            aria-label={ui.projects.openCaseStudyAria(project.title)}
           >
             <img
               src={project.image}
-              alt={`Screenshot of ${project.title}`}
+              alt={ui.projects.imageAlt(project.title)}
               loading="lazy"
             />
             <span className={styles.shotOverlay}>
-              <span>open case study</span>
+              <span>{ui.projects.openCaseStudy}</span>
               <ArrowRightIcon />
             </span>
           </button>
@@ -228,8 +232,12 @@ function ProjectCard({ project, onSelect }: CardProps) {
 
       <div className={styles.cardBody}>
         <div className={styles.cardMeta}>
-          <span className={styles.cardCategory}>{project.category}</span>
-          {project.featured && <span className={styles.featuredBadge}>featured</span>}
+          <span className={styles.cardCategory}>
+            {ui.projects.categories[project.category]}
+          </span>
+          {project.featured && (
+            <span className={styles.featuredBadge}>{ui.projects.featured}</span>
+          )}
         </div>
 
         <h3 className={styles.cardTitle}>
@@ -269,7 +277,7 @@ function ProjectCard({ project, onSelect }: CardProps) {
             onClick={() => onSelect(project)}
             type="button"
           >
-            case study <ArrowRightIcon />
+            {ui.projects.caseStudy} <ArrowRightIcon />
           </button>
         </div>
       </div>
@@ -284,16 +292,22 @@ interface DetailProps {
 }
 
 function ProjectDetail({ project, onBack, onServices }: DetailProps) {
+  const { ui } = useI18n();
+
   return (
     <>
       <button className={styles.backLink} onClick={onBack} type="button">
-        <ArrowLeftIcon /> all projects
+        <ArrowLeftIcon /> {ui.projects.all}
       </button>
 
       <header className={styles.detailHead}>
         <div className={styles.cardMeta}>
-          <span className={styles.cardCategory}>{project.category}</span>
-          {project.featured && <span className={styles.featuredBadge}>featured</span>}
+          <span className={styles.cardCategory}>
+            {ui.projects.categories[project.category]}
+          </span>
+          {project.featured && (
+            <span className={styles.featuredBadge}>{ui.projects.featured}</span>
+          )}
         </div>
         <h2 className={styles.detailTitle}>{project.title}</h2>
         <p className={styles.detailLead}>{project.description}</p>
@@ -308,14 +322,14 @@ function ProjectDetail({ project, onBack, onServices }: DetailProps) {
           <img
             className={styles.detailImage}
             src={project.image}
-            alt={`Screenshot of ${project.title}`}
+            alt={ui.projects.imageAlt(project.title)}
           />
         ) : null}
       </div>
 
       <div className={styles.detailGrid}>
         <section>
-          <h3 className={styles.detailLabel}>$ what i built</h3>
+          <h3 className={styles.detailLabel}>{ui.projects.whatIBuilt}</h3>
           <ul className={styles.detailHighlights}>
             {project.highlights.map((highlight) => (
               <li key={highlight}>
@@ -327,24 +341,24 @@ function ProjectDetail({ project, onBack, onServices }: DetailProps) {
 
         <aside className={styles.detailSide}>
           <div className={styles.detailRow}>
-            <span className={styles.detailKey}>role</span>
+            <span className={styles.detailKey}>{ui.projects.role}</span>
             <span>{project.role}</span>
           </div>
           <div className={styles.detailRow}>
-            <span className={styles.detailKey}>type</span>
-            <span>{project.category}</span>
+            <span className={styles.detailKey}>{ui.projects.type}</span>
+            <span>{ui.projects.categories[project.category]}</span>
           </div>
           <div className={styles.detailRow}>
-            <span className={styles.detailKey}>stack</span>
+            <span className={styles.detailKey}>{ui.projects.stack}</span>
             <span>{project.tech.join(' · ')}</span>
           </div>
         </aside>
       </div>
 
       <div className={styles.detailFooter}>
-        <p>Need something similar?</p>
+        <p>{ui.projects.needSimilar}</p>
         <button className={styles.ghostBtn} onClick={onServices} type="button">
-          See how I can help <ArrowRightIcon />
+          {ui.projects.seeHowICanHelp} <ArrowRightIcon />
         </button>
       </div>
     </>
@@ -353,9 +367,16 @@ function ProjectDetail({ project, onBack, onServices }: DetailProps) {
 
 export default function ProjectsApp() {
   const { openApp } = useOS();
+  const { info, ui } = useI18n();
   const [filter, setFilter] = useState<Filter>('All');
   const [selected, setSelected] = useState<Project | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const filterLabels: Record<Filter, string> = {
+    All: ui.projects.filters.all,
+    Frontend: ui.projects.filters.frontend,
+    Backend: ui.projects.filters.backend,
+    Landing: ui.projects.filters.landing,
+  };
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
@@ -383,19 +404,21 @@ export default function ProjectsApp() {
         <>
           <header className={styles.projectsHead}>
             <div>
-              <p className={styles.eyebrow}>$ ls ~/projects</p>
-              <h2 className={styles.projectsTitle}>Selected work</h2>
-              <p className={styles.projectsIntro}>
-                A few products I have designed and built end to end. Open any card
-                for the full story.
-              </p>
+              <p className={styles.eyebrow}>{ui.projects.eyebrow}</p>
+              <h2 className={styles.projectsTitle}>{ui.projects.title}</h2>
+              <p className={styles.projectsIntro}>{ui.projects.intro}</p>
             </div>
             <span className={styles.projectCount}>
-              {info.projects.length.toString().padStart(2, '0')} projects
+              {info.projects.length.toString().padStart(2, '0')}{' '}
+              {ui.projects.countLabel}
             </span>
           </header>
 
-          <div className={styles.filters} role="group" aria-label="Filter projects by type">
+          <div
+            className={styles.filters}
+            role="group"
+            aria-label={ui.projects.filterAria}
+          >
             {FILTERS.map((item) => (
               <button
                 key={item}
@@ -404,7 +427,7 @@ export default function ProjectsApp() {
                 type="button"
                 aria-pressed={filter === item}
               >
-                {LABELS[item]}
+                {filterLabels[item]}
                 <span className={styles.filterCount}>{countFor(item)}</span>
               </button>
             ))}

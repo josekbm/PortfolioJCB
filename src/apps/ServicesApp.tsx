@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import styles from './apps.module.css';
-import { info, type ServiceIcon } from '../data/info';
+import type { ServiceIcon } from '../data/info';
+import { useI18n } from '../i18n/LanguageProvider';
 import { useOS } from '../os/OSProvider';
 import {
   ArrowRightIcon,
@@ -21,18 +22,16 @@ const ICONS: Record<ServiceIcon, ComponentType<{ className?: string }>> = {
   product: GridIcon,
 };
 
-const CONTACT_LINK = `mailto:${info.email}?subject=${encodeURIComponent(
-  'Project inquiry — via portfolio',
-)}`;
-
-function packageLink(title: string) {
-  return `mailto:${info.email}?subject=${encodeURIComponent(
-    `Project inquiry — ${title} package`,
-  )}`;
-}
-
 export default function ServicesApp() {
   const { openApp } = useOS();
+  const { info, ui } = useI18n();
+  const contactLink = `mailto:${info.email}?subject=${encodeURIComponent(
+    ui.services.contactSubject,
+  )}`;
+  const packageLink = (title: string) =>
+    `mailto:${info.email}?subject=${encodeURIComponent(
+      ui.services.packageSubject(title),
+    )}`;
 
   return (
     <div className={`${styles.content} ${styles.scroll} ${styles.services}`}>
@@ -43,37 +42,37 @@ export default function ServicesApp() {
         </span>
 
         <h2 className={styles.serviceHeading}>
-          Web products &amp; AI automation,
+          {ui.services.headline1}
           <br />
-          <span className="gradient-text">built end to end.</span>
+          <span className="gradient-text">{ui.services.headline2}</span>
         </h2>
 
         <p className={styles.serviceLead}>{info.services.intro}</p>
 
         <div className={styles.serviceActions}>
-          <a className={styles.cta} href={CONTACT_LINK}>
-            <BriefcaseIcon /> Start a project
+          <a className={styles.cta} href={contactLink}>
+            <BriefcaseIcon /> {ui.services.startProject}
           </a>
           <button
             className={styles.ghostBtn}
             onClick={() => openApp('projects')}
             type="button"
           >
-            See selected work <ArrowRightIcon />
+            {ui.services.seeWork} <ArrowRightIcon />
           </button>
         </div>
 
         <div className={styles.serviceMeta}>
           <span>{info.location}</span>
-          <span>Remote-friendly</span>
-          <span>CET / UTC+1</span>
+          <span>{ui.services.remote}</span>
+          <span>{ui.services.timezone}</span>
         </div>
       </section>
 
       <section className={styles.serviceSection}>
         <div className={styles.sectionHead}>
-          <h3 className={styles.groupTitle}>$ services --list</h3>
-          <span className={styles.sectionHint}>what i can take off your plate</span>
+          <h3 className={styles.groupTitle}>{ui.services.servicesTitle}</h3>
+          <span className={styles.sectionHint}>{ui.services.servicesHint}</span>
         </div>
 
         <div className={styles.serviceGrid}>
@@ -109,8 +108,8 @@ export default function ServicesApp() {
 
       <section className={styles.serviceSection}>
         <div className={styles.sectionHead}>
-          <h3 className={styles.groupTitle}>$ how it works</h3>
-          <span className={styles.sectionHint}>no black boxes</span>
+          <h3 className={styles.groupTitle}>{ui.services.howItWorksTitle}</h3>
+          <span className={styles.sectionHint}>{ui.services.howItWorksHint}</span>
         </div>
 
         <ol className={styles.processGrid}>
@@ -130,8 +129,8 @@ export default function ServicesApp() {
 
       <section className={styles.serviceSection}>
         <div className={styles.sectionHead}>
-          <h3 className={styles.groupTitle}>$ packages --list</h3>
-          <span className={styles.sectionHint}>fixed scope · fixed quote · no surprises</span>
+          <h3 className={styles.groupTitle}>{ui.services.packagesTitle}</h3>
+          <span className={styles.sectionHint}>{ui.services.packagesHint}</span>
         </div>
 
         <div className={styles.packageGrid}>
@@ -147,7 +146,9 @@ export default function ServicesApp() {
                     <Icon />
                   </span>
                   {pkg.featured && (
-                    <span className={styles.featuredBadge}>core offer</span>
+                    <span className={styles.featuredBadge}>
+                      {ui.services.coreOffer}
+                    </span>
                   )}
                 </div>
 
@@ -163,27 +164,24 @@ export default function ServicesApp() {
                 </ul>
 
                 <p className={styles.packageBest}>
-                  <span>best for</span> {pkg.bestFor}
+                  <span>{ui.services.bestFor}</span> {pkg.bestFor}
                 </p>
 
                 <a className={styles.packageCta} href={packageLink(pkg.title)}>
-                  Request quote <ArrowRightIcon />
+                  {ui.services.requestQuote} <ArrowRightIcon />
                 </a>
               </article>
             );
           })}
         </div>
 
-        <p className={styles.packageNote}>
-          Every package is quoted up front. Need an ongoing arrangement? Monthly
-          retainers and technical consulting are available too.
-        </p>
+        <p className={styles.packageNote}>{ui.services.packageNote}</p>
       </section>
 
       <section className={styles.serviceSection}>
         <div className={styles.sectionHead}>
-          <h3 className={styles.groupTitle}>$ faq</h3>
-          <span className={styles.sectionHint}>the questions that usually come next</span>
+          <h3 className={styles.groupTitle}>{ui.services.faqTitle}</h3>
+          <span className={styles.sectionHint}>{ui.services.faqHint}</span>
         </div>
 
         <div className={styles.faqList}>
@@ -203,14 +201,11 @@ export default function ServicesApp() {
 
       <section className={styles.serviceCta}>
         <div>
-          <h3 className={styles.serviceCtaTitle}>Have a problem in mind?</h3>
-          <p className={styles.serviceCtaText}>
-            Tell me what you are trying to build or automate. I will reply with an
-            honest take and a clear next step.
-          </p>
+          <h3 className={styles.serviceCtaTitle}>{ui.services.ctaTitle}</h3>
+          <p className={styles.serviceCtaText}>{ui.services.ctaText}</p>
         </div>
-        <a className={styles.cta} href={CONTACT_LINK}>
-          Start a conversation <ArrowRightIcon />
+        <a className={styles.cta} href={contactLink}>
+          {ui.services.startConversation} <ArrowRightIcon />
         </a>
       </section>
     </div>

@@ -1,5 +1,5 @@
 import styles from './apps.module.css';
-import { info } from '../data/info';
+import { useI18n } from '../i18n/LanguageProvider';
 import { useOS } from '../os/OSProvider';
 import {
   ArrowRightIcon,
@@ -19,6 +19,7 @@ const ICONS = {
 
 export default function ContactApp() {
   const { openApp } = useOS();
+  const { info, ui } = useI18n();
 
   return (
     <div className={`${styles.content} ${styles.scroll}`}>
@@ -48,7 +49,7 @@ export default function ContactApp() {
                   {social.icon === 'mail'
                     ? info.email
                     : social.icon === 'cv'
-                      ? 'Download CV'
+                      ? ui.contact.downloadCv
                       : social.label === 'GitHub'
                         ? 'github.com/josekbm'
                         : 'linkedin.com/in/jose-carlos-blanco'}
@@ -61,14 +62,14 @@ export default function ContactApp() {
 
       <div className={styles.contactActions}>
         <a className={styles.cta} href={`mailto:${info.email}`}>
-          <MailIcon style={{ width: 18, height: 18 }} /> Say hello
+          <MailIcon style={{ width: 18, height: 18 }} /> {ui.contact.sayHello}
         </a>
         <button
           className={styles.ghostBtn}
           onClick={() => openApp('services')}
           type="button"
         >
-          View services <ArrowRightIcon />
+          {ui.contact.viewServices} <ArrowRightIcon />
         </button>
       </div>
 

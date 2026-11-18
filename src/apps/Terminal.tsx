@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import styles from './Terminal.module.css';
+import { useI18n } from '../i18n/LanguageProvider';
 import { useOS } from '../os/OSProvider';
 import { runCommand, type CommandContext } from './terminalCommands';
 import type { AppProps } from './types';
@@ -14,6 +15,7 @@ let idCounter = 0;
 
 export default function Terminal({ theme, onToggleTheme, onReboot }: AppProps) {
   const { openApp, closeApp } = useOS();
+  const { info, ui, lang, locale } = useI18n();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [value, setValue] = useState('');
   const [history, setHistory] = useState<string[]>([]);
@@ -28,25 +30,35 @@ export default function Terminal({ theme, onToggleTheme, onReboot }: AppProps) {
         id: idCounter++,
         output: (
           <>
-            <div className={`${styles.line} ${styles.ok}`}>JCB OS — interactive terminal</div>
-            <div className={styles.line}>
-              type <span className={styles.ok}>help</span> to see what you can do.
+            <div className={`${styles.line} ${styles.ok}`}>
+              {ui.terminal.welcomeTitle}
             </div>
-            <div className={styles.line}>
-              looking to hire? run <span className={styles.ok}>open services</span>.
-            </div>
+            <div className={styles.line}>{ui.terminal.welcomeHelp}</div>
+            <div className={styles.line}>{ui.terminal.welcomeHire}</div>
           </>
         ),
       },
     ]);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [entries]);
 
-  const ctx: CommandContext = { openApp, closeApp, onToggleTheme, theme, onReboot, history };
+  const ctx: CommandContext = {
+    openApp,
+    closeApp,
+    onToggleTheme,
+    theme,
+    onReboot,
+    history,
+    info,
+    ui,
+    lang,
+    locale,
+  };
 
   const submit = () => {
     const cmd = value.trim();
@@ -116,7 +128,7 @@ export default function Terminal({ theme, onToggleTheme, onReboot }: AppProps) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
-          placeholder="type a command…"
+          placeholder={ui.terminal.placeholder}
           spellCheck={false}
           autoCapitalize="off"
           autoComplete="off"

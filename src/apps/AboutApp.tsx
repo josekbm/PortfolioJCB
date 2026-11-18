@@ -1,8 +1,9 @@
 import styles from './apps.module.css';
-import { info } from '../data/info';
-import { NEOFETCH_ROWS } from './neofetch';
+import { useI18n } from '../i18n/LanguageProvider';
 
 export default function AboutApp() {
+  const { info, ui } = useI18n();
+
   return (
     <div className={`${styles.content} ${styles.scroll}`}>
       <div className={styles.neofetch}>
@@ -10,11 +11,11 @@ export default function AboutApp() {
           <img
             className={styles.avatar}
             src={info.selfPortrait}
-            alt={`Portrait of ${info.firstName}`}
+            alt={ui.about.portraitAlt(info.firstName)}
           />
         </div>
         <div className={styles.table}>
-          {NEOFETCH_ROWS.map(([key, value]) => (
+          {ui.neofetch.rows.map(([key, value]) => (
             <div key={key} style={{ display: 'contents' }}>
               <div className={styles.key}>{key}</div>
               <div>: {value}</div>

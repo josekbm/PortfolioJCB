@@ -35,8 +35,33 @@
   letter-spacing: 0.01em;
 }
 
+.brandAccent {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 .user {
   color: var(--text-muted);
+}
+
+.lang {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid rgba(44, 234, 163, 0.28);
+  background: rgba(44, 234, 163, 0.06);
+  border-radius: 6px;
+  padding: 0.18rem 0.4rem;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.lang:hover {
+  border-color: var(--accent);
+  background: rgba(44, 234, 163, 0.12);
 }
 
 .clock {

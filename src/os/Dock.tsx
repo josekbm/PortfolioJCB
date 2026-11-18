@@ -1,11 +1,14 @@
 import styles from './Dock.module.css';
 import { APPS } from './apps';
 import { useOS } from './OSProvider';
+import { useI18n } from '../i18n/LanguageProvider';
+import { CV_URL } from '../data/links';
 import { DocIcon } from '../components/Icons';
-import { info } from '../data/info';
 
 export default function Dock() {
   const { windows, toggleApp } = useOS();
+  const { info, ui } = useI18n();
+  const appName = (app: (typeof APPS)[number]) => ui.apps[app.nameKey];
 
   return (
     <div className={styles.wrap}>
@@ -19,11 +22,11 @@ export default function Dock() {
                 state.focused ? styles.focused : ''
               }`}
               onClick={() => toggleApp(app.id)}
-              aria-label={app.name}
-              title={app.name}
+              aria-label={appName(app)}
+              title={appName(app)}
             >
               <app.Icon className={styles.icon} />
-              <span className={styles.tooltip}>{app.name}</span>
+              <span className={styles.tooltip}>{appName(app)}</span>
               <span className={styles.dot} />
             </button>
           );
@@ -33,14 +36,14 @@ export default function Dock() {
 
         <a
           className={styles.app}
-          href="./CV_Jose_Carlos_Blanco.pdf"
+          href={CV_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Curriculum"
-          title="Curriculum"
+          aria-label={ui.dock.curriculum}
+          title={ui.dock.curriculum}
         >
           <DocIcon className={styles.icon} />
-          <span className={styles.tooltip}>CV</span>
+          <span className={styles.tooltip}>{ui.dock.cv}</span>
         </a>
       </div>
       <p className={styles.credit}>{info.firstName} © {new Date().getFullYear()}</p>

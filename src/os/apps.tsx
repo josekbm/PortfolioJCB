@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import type { UI } from '../i18n/ui';
 import {
   TerminalIcon,
   UserIcon,
@@ -18,16 +19,26 @@ export type AppId =
 
 export interface AppDef {
   id: AppId;
-  name: string;
-  title: string;
+  nameKey: keyof UI['apps'];
+  titleKey: keyof UI['windowTitles'];
   Icon: ComponentType<{ className?: string }>;
 }
 
 export const APPS: AppDef[] = [
-  { id: 'about', name: 'About', title: 'about.txt', Icon: UserIcon },
-  { id: 'skills', name: 'Skills', title: 'skills', Icon: WrenchIcon },
-  { id: 'services', name: 'Services', title: '~/services', Icon: BriefcaseIcon },
-  { id: 'projects', name: 'Projects', title: '~/projects', Icon: GridIcon },
-  { id: 'contact', name: 'Contact', title: 'contact', Icon: MailIcon },
-  { id: 'terminal', name: 'Terminal', title: 'jose@jcb: ~', Icon: TerminalIcon },
+  { id: 'about', nameKey: 'about', titleKey: 'about', Icon: UserIcon },
+  { id: 'skills', nameKey: 'skills', titleKey: 'skills', Icon: WrenchIcon },
+  {
+    id: 'services',
+    nameKey: 'services',
+    titleKey: 'services',
+    Icon: BriefcaseIcon,
+  },
+  { id: 'projects', nameKey: 'projects', titleKey: 'projects', Icon: GridIcon },
+  { id: 'contact', nameKey: 'contact', titleKey: 'contact', Icon: MailIcon },
+  {
+    id: 'terminal',
+    nameKey: 'terminal',
+    titleKey: 'terminal',
+    Icon: TerminalIcon,
+  },
 ];
