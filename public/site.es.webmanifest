@@ -1,0 +1,25 @@
+{
+  "name": "Jose Carlos Blanco — Ingeniero Full Stack y de Automatización de Procesos",
+  "short_name": "blancodev",
+  "lang": "es",
+  "description": "Portfolio y servicios de Jose Carlos Blanco: desarrollo web, integración de IA y automatización de procesos.",
+  "start_url": "/es/",
+  "scope": "/es/",
+  "display": "standalone",
+  "background_color": "#0b0f14",
+  "theme_color": "#0b0f14",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
