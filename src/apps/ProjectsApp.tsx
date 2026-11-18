@@ -19,7 +19,7 @@ type Filter = 'All' | ProjectCategory;
 
 const FILTERS: Filter[] = ['All', 'Frontend', 'Backend', 'Landing'];
 
-function previewLabel(project: Project, fallback: string) {
+function previewLabel(project: Project, fallback: string, codePath: string) {
   if (project.live) {
     try {
       return new URL(project.live).host.replace(/^www\./, '');
@@ -34,7 +34,7 @@ function previewLabel(project: Project, fallback: string) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
-  return project.code ? `~/projects/${slug}` : slug;
+  return project.code ? `~/${codePath}/${slug}` : slug;
 }
 
 function PreviewBar({ project }: { project: Project }) {
@@ -52,7 +52,7 @@ function PreviewBar({ project }: { project: Project }) {
         <i />
       </span>
       <span className={styles.previewUrl}>
-        {previewLabel(project, ui.projects.preview)}
+        {previewLabel(project, ui.projects.preview, ui.projects.codePath)}
       </span>
       <span className={styles.previewStatus}>
         {project.live
