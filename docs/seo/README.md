@@ -10,8 +10,8 @@ Documentación de trabajo del proyecto SEO.
 | 1 | Quick wins | ✅ Implementado y verificado en local |
 | 2 | Rutas y modelo de datos | ✅ Implementado y verificado |
 | 3 | Páginas estáticas + shell | ✅ 26 URLs generadas y verificadas |
-| 4 | Contenido | ⏳ Siguiente |
-| 5 | Metadatos y JSON-LD por página | ⏳ |
+| 4 | Contenido | ✅ Casos, About y contacto revisados; 0 errores de metadatos |
+| 5 | Metadatos y JSON-LD por página | ⏳ Siguiente |
 | 6 | Rendimiento y CWV | ⏳ |
 | 7 | SEO internacional | ⏳ |
 | 8 | Autoridad y contenido continuo | ⏳ |
@@ -23,6 +23,7 @@ Documentación de trabajo del proyecto SEO.
 - [Fase 1 — Quick wins](phase-1-quick-wins.md)
 - [Fase 2 — Arquitectura](phase-2-architecture.md)
 - [Fase 3 — Páginas estáticas](phase-3-static-pages.md)
+- [Fase 4 — Contenido](phase-4-content.md)
 - [Roadmap](roadmap.md)
 - Artefactos de medición: `docs/seo/baseline/`
 

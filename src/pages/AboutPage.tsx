@@ -7,6 +7,7 @@ import {
   MailIcon,
 } from '../components/Icons';
 import ProfileSummary from '../components/ProfileSummary';
+import ExperienceContent from '../components/ExperienceContent';
 import { useI18n } from '../i18n/LanguageProvider';
 import { pathFor } from '../routes';
 
@@ -27,7 +28,9 @@ export default function AboutPage() {
 
       <ProfileSummary />
 
-      <section className={styles.group} style={{ marginTop: '1.75rem' }}>
+      <ExperienceContent />
+
+      <section className={styles.group}>
         <h2 className={styles.groupTitle}>{ui.apps.skills}</h2>
 
         <h3 className={styles.groupTitle}>{ui.skills.proficient}</h3>

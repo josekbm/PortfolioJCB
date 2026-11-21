@@ -2,13 +2,21 @@ import styles from '../apps/apps.module.css';
 import type { Project } from '../data/info';
 import { ProjectLinks, ProjectMedia } from '../components/ProjectMedia';
 import { useI18n } from '../i18n/LanguageProvider';
-import { pathFor } from '../routes';
+import { pathFor, projectPath } from '../routes';
 import { ArrowRightIcon, CheckIcon } from '../components/Icons';
 
 export default function ProjectPage({ project }: { project: Project }) {
-  const { ui, lang } = useI18n();
+  const { info, ui, lang } = useI18n();
   const servicesHref = pathFor('services', lang);
   const contactHref = pathFor('contact', lang);
+  const related = [
+    ...info.projects.filter(
+      (item) => item.slug !== project.slug && item.category === project.category,
+    ),
+    ...info.projects.filter(
+      (item) => item.slug !== project.slug && item.category !== project.category,
+    ),
+  ].slice(0, 2);
 
   return (
     <div className={styles.content}>
@@ -75,6 +83,27 @@ export default function ProjectPage({ project }: { project: Project }) {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className={styles.serviceSection} aria-labelledby="more-cases">
+        <h2 id="more-cases" className={styles.detailLabel}>
+          {ui.projects.moreCases}
+        </h2>
+        <div className={styles.relatedGrid}>
+          {related.map((item) => (
+            <a
+              key={item.slug}
+              className={styles.relatedCard}
+              href={projectPath(item.slug, lang)}
+            >
+              <span className={styles.cardCategory}>
+                {ui.projects.categories[item.category]}
+              </span>
+              <strong className={styles.relatedTitle}>{item.title}</strong>
+              <span className={styles.relatedSummary}>{item.summary}</span>
+            </a>
+          ))}
+        </div>
       </section>
 
       <div className={styles.detailFooter}>

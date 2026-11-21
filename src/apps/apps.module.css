@@ -104,6 +104,62 @@
   background: var(--bg-soft);
 }
 
+/* ---------- Experience ---------- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.timelineItem {
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+}
+
+.timelineHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.2rem 0.75rem;
+}
+
+.timelineRole {
+  font-size: 0.98rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.timelinePeriod {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.timelineMeta {
+  margin: 0.2rem 0 0.45rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.timelineSummary {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.timelinePoints {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
 /* ---------- Skills ---------- */
 .group {
   margin-bottom: 1.75rem;
@@ -770,6 +826,40 @@
   font-size: 0.63rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-soft);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.relatedCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.relatedTitle {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.relatedSummary {
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
 

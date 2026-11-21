@@ -15,13 +15,18 @@ export default function HomeStatic() {
   const selected = info.projects.slice(0, 3);
   const intro =
     lang === 'es'
-      ? `Soy ${info.firstName}, ${info.role} en ${info.location}. Construyo productos web y automatizo trabajo manual con React, Python, PHP, n8n y Docker.`
-      : `I'm ${info.firstName}, a ${info.role} based in ${info.location}. I build web products and automate manual work with React, Python, PHP, n8n and Docker.`;
+      ? `Soy ${info.firstName}, ${info.role} en ${info.location}. Construyo productos web y automatizo el trabajo manual que los rodea con React, Python, PHP, n8n y Docker.`
+      : `I'm ${info.firstName}, a ${info.role} based in ${info.location}. I build web products and automate the manual work around them with React, Python, PHP, n8n and Docker.`;
 
   return (
     <div className={styles.content}>
       <h1 className="staticH1">{info.role}</h1>
       <p className={styles.serviceLead}>{intro}</p>
+
+      <span className={styles.availability} style={{ marginBottom: '0.5rem' }}>
+        <span className={styles.pulse} />
+        {info.services.availability}
+      </span>
 
       <p className={styles.projectsIntro}>
         <a className={styles.caseLink} href={pathFor('about', lang)}>

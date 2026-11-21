@@ -8,8 +8,8 @@ export default function ContactPage() {
   return (
     <div className={styles.content}>
       <h1 className="staticH1">{ui.contact.headline}</h1>
-      <p className={styles.serviceLead}>{ui.services.ctaText}</p>
-      <ContactDetails showProcess />
+      <p className={styles.serviceLead}>{ui.contact.intro}</p>
+      <ContactDetails showProcess showExpectations />
     </div>
   );
 }

@@ -33,14 +33,15 @@ Objetivo: pasar de 2 URLs sin contenido indexable a 26 URLs con contenido comple
 - Dock del escritorio convertido a enlaces reales.
 - Verificado: 26 páginas, 0 errores de canonical/H1/hreflang, Lighthouse 99/100/100/100 en services.
 
-### Fase 4 — Contenido
+### Fase 4 — Contenido ✅
 
-- Home: propuesta de valor.
-- Servicios: H1 comercial, servicios, proceso, paquetes, FAQ.
-- Proyectos: índice + 8 casos con problema/solución/resultados.
-- About: experiencia, skills, foto, CV.
-- Contacto: email, disponibilidad, ubicación.
-- Enlazado interno y anchor text descriptivo.
+- Home: propuesta de valor y disponibilidad.
+- Servicios: H1 comercial, servicios, proceso, paquetes, FAQ y tono revisado.
+- Proyectos: índice + 8 casos con problema/solución/resultados verificados contra los repos.
+- About: experiencia y formación del CV, skills, foto y CV.
+- Contacto: email, disponibilidad, ubicación, plazo de respuesta y qué incluir.
+- Enlazado interno: dos casos relacionados por proyecto y anchor text descriptivo.
+- Sin años, métricas ni testimonios inventados.
 
 ### Fase 5 — Metadatos y JSON-LD por página
 

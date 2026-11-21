@@ -36,6 +36,8 @@ const en = {
   about: {
     heading: 'About Jose Carlos Blanco',
     more: 'More about me',
+    experience: '$ experience',
+    education: '$ education',
     portraitAlt: (name: string) => `Portrait of ${name}`,
   },
   skills: {
@@ -47,7 +49,7 @@ const en = {
     title: 'Selected work',
     heading: 'Projects & case studies',
     intro:
-      'A few products I have designed and built end to end. Open any card for the full story.',
+      'A mix of client work and personal projects, from Astro landing pages to React dashboards and REST APIs. Open any card for the full story.',
     countLabel: 'projects',
     filters: {
       all: 'all',
@@ -74,6 +76,7 @@ const en = {
     stack: 'stack',
     needSimilar: 'Need something similar?',
     seeHowICanHelp: 'See how I can help',
+    moreCases: 'More case studies',
     categories: {
       Frontend: 'Frontend',
       Backend: 'Backend',
@@ -87,7 +90,7 @@ const en = {
     headline1: 'Web products & AI automation,',
     headline2: 'built end to end.',
     remote: 'Remote-friendly',
-    timezone: 'CET / UTC+1',
+    timezone: 'CET / CEST (UTC+1/+2)',
     servicesTitle: '$ services --list',
     servicesHint: 'what i can take off your plate',
     howItWorksTitle: '$ how it works',
@@ -110,9 +113,18 @@ const en = {
   },
   contact: {
     headline: "Let's talk about your project",
+    intro:
+      'Whether you have a fixed brief or just a problem to solve, tell me what you are working on. I read every message myself.',
     downloadCv: 'Download CV',
     sayHello: 'Say hello',
     viewServices: 'View services',
+    beforeYouWriteTitle: 'What to include in your first email',
+    beforeYouWrite: [
+      'The goal: what the product or workflow should do.',
+      'The deadline and any hard constraints.',
+      'Links to an existing site, repository or process.',
+    ],
+    responseTime: 'I reply within 24–48 working hours (Madrid time).',
   },
   terminal: {
     welcomeTitle: 'JCB OS — interactive terminal',
@@ -237,6 +249,8 @@ const es: UI = {
   about: {
     heading: 'Sobre Jose Carlos Blanco',
     more: 'Más sobre mí',
+    experience: '$ experiencia',
+    education: '$ formación',
     portraitAlt: (name: string) => `Retrato de ${name}`,
   },
   skills: {
@@ -248,7 +262,7 @@ const es: UI = {
     title: 'Trabajo seleccionado',
     heading: 'Proyectos y casos de estudio',
     intro:
-      'Algunos productos que he diseñado y construido de principio a fin. Abre cualquier tarjeta para ver la historia completa.',
+      'Una mezcla de trabajo para clientes y proyectos personales, desde landings en Astro hasta dashboards en React y APIs REST. Abre cualquier tarjeta para ver la historia completa.',
     countLabel: 'proyectos',
     filters: {
       all: 'todos',
@@ -275,6 +289,7 @@ const es: UI = {
     stack: 'stack',
     needSimilar: '¿Necesitas algo parecido?',
     seeHowICanHelp: 'Ver cómo puedo ayudarte',
+    moreCases: 'Más casos de estudio',
     categories: {
       Frontend: 'Frontend',
       Backend: 'Backend',
@@ -288,7 +303,7 @@ const es: UI = {
     headline1: 'Productos web y automatización con IA,',
     headline2: 'de principio a fin.',
     remote: 'En remoto',
-    timezone: 'CET / UTC+1',
+    timezone: 'CET / CEST (UTC+1/+2)',
     servicesTitle: '$ servicios --list',
     servicesHint: 'lo que puedo quitarte de encima',
     howItWorksTitle: '$ cómo funciona',
@@ -299,7 +314,7 @@ const es: UI = {
     bestFor: 'ideal para',
     requestQuote: 'Pedir presupuesto',
     packageNote:
-      'Cada paquete se presupuesta por adelantado. ¿Necesitas algo continuo? También ofrezco retainers mensuales y consultoría técnica.',
+      'Cada paquete se presupuesta por adelantado. ¿Necesitas algo continuo? También ofrezco acuerdos mensuales y consultoría técnica.',
     faqTitle: '$ preguntas frecuentes',
     faqHint: 'las preguntas que suelen venir después',
     ctaTitle: '¿Tienes un problema en mente?',
@@ -311,9 +326,18 @@ const es: UI = {
   },
   contact: {
     headline: 'Hablemos de tu proyecto',
+    intro:
+      'Tanto si tienes un encargo definido como si solo tienes un problema que resolver, cuéntame en qué estás trabajando. Leo cada mensaje personalmente.',
     downloadCv: 'Descargar CV',
     sayHello: 'Hola',
     viewServices: 'Ver servicios',
+    beforeYouWriteTitle: 'Qué incluir en tu primer correo',
+    beforeYouWrite: [
+      'El objetivo: qué debe hacer el producto o el flujo de trabajo.',
+      'El plazo y las restricciones que no se pueden mover.',
+      'Enlaces a una web, repositorio o proceso existente.',
+    ],
+    responseTime: 'Respondo en 24–48 horas laborables (hora de Madrid).',
   },
   terminal: {
     welcomeTitle: 'JCB OS — terminal interactiva',

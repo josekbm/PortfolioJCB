@@ -1,6 +1,7 @@
 import styles from '../apps/apps.module.css';
 import {
   ArrowRightIcon,
+  CheckIcon,
   DocIcon,
   ExternalLinkIcon,
   GithubIcon,
@@ -19,11 +20,13 @@ const ICONS = {
 
 interface ContactDetailsProps {
   showProcess?: boolean;
+  showExpectations?: boolean;
   onViewServices?: () => void;
 }
 
 export default function ContactDetails({
   showProcess = false,
+  showExpectations = false,
   onViewServices,
 }: ContactDetailsProps) {
   const { info, ui, lang } = useI18n();
@@ -92,6 +95,25 @@ export default function ContactDetails({
           </a>
         )}
       </div>
+
+      {showExpectations && (
+        <section
+          className={styles.serviceSection}
+          style={{ marginTop: '1.75rem' }}
+        >
+          <h2 className={styles.groupTitle}>
+            {ui.contact.beforeYouWriteTitle}
+          </h2>
+          <ul className={styles.detailHighlights}>
+            {ui.contact.beforeYouWrite.map((item) => (
+              <li key={item}>
+                <CheckIcon /> {item}
+              </li>
+            ))}
+          </ul>
+          <p className={styles.packageNote}>{ui.contact.responseTime}</p>
+        </section>
+      )}
 
       {showProcess && (
         <section
