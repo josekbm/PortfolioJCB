@@ -1,7 +1,8 @@
 # Fase 4 — Contenido
 
 **Fecha:** 2026-11-21
-**Estado:** implementado y verificado en local
+**Estado:** implementado, desplegado y verificado en producción
+**Commit:** `4498625`
 **Dependencias:** Fases 0-3
 
 ---
@@ -85,6 +86,8 @@ No se añadieron años, métricas ni testimonios.
 ## 7. Verificación
 
 - `npm run build`: OK; 26 páginas y 26 URLs en el sitemap.
+- Producción (`https://blancodev.es`, 2026-11-21): 26 URLs, 0 problemas de título/description/H1/canonical, contenido nuevo visible en About, Contacto y los 8 casos.
+- Assets: `Cache-Control: public, max-age=31536000, immutable`; cabeceras de seguridad presentes.
 - `title` ≤60 y `description` ≤155 en las 26 páginas: **0 problemas**.
 - Un solo `<h1>` por página, canonical propio y 3 `hreflang`: **0 errores**.
 - JSON-LD válido en las 26 páginas: **0 errores**.
