@@ -1,0 +1,185 @@
+=== date ===
+Fri Nov 20 16:40:55 UTC 2026
+=== commit ===
+039e839de565f5b6e30c75d8b45d71bbbc877e4f
+=== baseline commit ===
+039e839de565f5b6e30c75d8b45d71bbbc877e4f
+=== / ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/html
+content-length: 3452
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-d7c"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /es/ ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/html
+content-length: 3565
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-ded"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /index.html ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/html
+content-length: 3452
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-d7c"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /es/index.html ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/html
+content-length: 3565
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-ded"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /CV_Jose_Carlos_Blanco.pdf ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: application/pdf
+content-length: 17288
+last-modified: Wed, 18 Nov 2026 08:03:03 GMT
+etag: "6afd5bb7-4388"
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /robots.txt ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/plain
+content-length: 66
+last-modified: Wed, 18 Nov 2026 08:03:03 GMT
+etag: "6afd5bb7-42"
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /sitemap.xml ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/xml
+content-length: 957
+last-modified: Wed, 18 Nov 2026 08:03:03 GMT
+etag: "6afd5bb7-3bd"
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== /esto-no-existe ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/html
+content-length: 3452
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-d7c"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== canonical /index.html ===
+<link rel="canonical" href="https://blancodev.es/" />
+=== canonical /es/index.html ===
+<link rel="canonical" href="https://blancodev.es/es/" />
+=== gzip home ===
+vary: Accept-Encoding
+content-encoding: gzip
+=== gzip asset ===
+asset=/assets/main-fbi4i_tx.js
+content-encoding: gzip
+cache-control: max-age=28144
+=== asset headers ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: application/javascript
+content-length: 220801
+etag: "6afd5bb8-35e81"
+expires: Sat, 21 Nov 2026 00:30:00 GMT
+cache-control: max-age=28144
+x-served-by: blancodev.es
+accept-ranges: bytes
+
+=== www https ===
+HTTP/2 200 
+server: openresty
+date: Fri, 20 Nov 2026 16:40:56 GMT
+content-type: text/html
+content-length: 3452
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-d7c"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: www.blancodev.es
+
+=== www http ===
+HTTP/1.1 301 Moved Permanently
+Server: openresty
+Date: Fri, 20 Nov 2026 16:40:56 GMT
+Content-Type: text/html
+Content-Length: 166
+Connection: keep-alive
+Location: https://www.blancodev.es/
+
+=== apex http ===
+HTTP/1.1 301 Moved Permanently
+Server: openresty
+Date: Fri, 20 Nov 2026 16:40:56 GMT
+Content-Type: text/html
+Content-Length: 166
+Connection: keep-alive
+Location: https://blancodev.es/
+

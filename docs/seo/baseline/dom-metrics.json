@@ -1,0 +1,30 @@
+{
+  "en": {
+    "innerTextWords": 170,
+    "textContentWords": 129,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "links": [
+      {
+        "href": "/CV_Jose_Carlos_Blanco.pdf",
+        "text": "CV",
+        "external": false
+      }
+    ]
+  },
+  "es": {
+    "innerTextWords": 177,
+    "textContentWords": 136,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "links": [
+      {
+        "href": "/CV_Jose_Carlos_Blanco.pdf",
+        "text": "CV",
+        "external": false
+      }
+    ]
+  }
+}

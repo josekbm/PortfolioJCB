@@ -37,6 +37,18 @@ export default function Window({ app, children }: WindowProps) {
   const [desktop, setDesktop] = useState(isDesktop);
   const [maximized, setMaximized] = useState(false);
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  // Minimized windows stay in the DOM for the SEO bridge; `inert` removes
+  // them from the tab order and the accessibility tree without breaking the
+  // fade/scale transition.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    if (state.minimized) el.setAttribute('inert', '');
+    else el.removeAttribute('inert');
+  }, [state.minimized]);
+
   const [pos, setPos] = useState(() => {
     const d = DEFAULT[app.id];
     const vw = window.innerWidth;
@@ -85,6 +97,7 @@ export default function Window({ app, children }: WindowProps) {
 
   return (
     <section
+      ref={sectionRef}
       className={`${styles.window} ${maximized ? styles.maximized : ''} ${
         state.focused ? styles.focused : ''
       } ${state.minimized ? styles.minimized : ''}`}

@@ -23,6 +23,22 @@ export interface CodePreview {
 
 export interface Project {
   title: string;
+  /** Stable, URL-safe identifier used by `/projects/<slug>/`. */
+  slug: string;
+  /**
+   * One-line summary for the static project index and previews. The current
+   * cards use the richer `description`; Phase 3 will consume this field.
+   */
+  summary: string;
+  /** Per-project metadata for the static detail page. */
+  seoTitle: string;
+  seoDescription: string;
+  /** Optional until the exact delivery year is confirmed. */
+  year?: number;
+  /** Case-study narrative. */
+  problem: string;
+  solution: string;
+  results: string[];
   description: string;
   category: ProjectCategory;
   role: string;
@@ -175,6 +191,20 @@ export const info: Info = {
   projects: [
     {
       title: 'JM Sánchez · Cortador de Jamón',
+      slug: 'jm-sanchez',
+      summary: 'Astro one-page site for a professional ham cutter in Seville.',
+      seoTitle: 'JM Sánchez · Cortador de Jamón — Astro Case Study',
+      seoDescription:
+        'How I designed and built a fast, accessible Astro one-page site for a professional ham cutter in Seville, with WhatsApp quotes and structured SEO.',
+      problem:
+        'The goal was a credible online presence that turned visits into quote requests without depending on a heavy CMS.',
+      solution:
+        'I designed a black-and-gold editorial identity and built a one-page Astro site with a gallery, a WhatsApp quote flow and structured data.',
+      results: [
+        'Live site deployed with Docker and HTTPS',
+        'Static Astro output with no client-side framework',
+        'Accessible gallery and WhatsApp quote flow',
+      ],
       description:
         'A one-page site for a professional ham cutter in Seville, with services, a custom quote flow, gallery and WhatsApp contact.',
       category: 'Landing',
@@ -193,6 +223,20 @@ export const info: Info = {
     },
     {
       title: "Gamer's Nest",
+      slug: 'gamers-nest',
+      summary: 'React and TypeScript hub to discover, review and share games.',
+      seoTitle: "Gamer's Nest — React Game Discovery App | blancodev",
+      seoDescription:
+        'A React and TypeScript community hub to discover, review and share games, with search, release views and a static GitHub Pages deployment.',
+      problem:
+        'The goal was one place to discover upcoming releases and share favourite titles.',
+      solution:
+        'I built a React and TypeScript interface with discovery views, live search and a responsive game grid.',
+      results: [
+        'Static deployment on GitHub Pages',
+        'Search and responsive game grid',
+        'Reusable game card components',
+      ],
       description:
         'A community hub for gamers to discover, review and share their favorite titles.',
       category: 'Frontend',
@@ -209,6 +253,20 @@ export const info: Info = {
     },
     {
       title: "Miranda's Dashboard",
+      slug: 'mirandas-dashboard',
+      summary: 'React admin dashboard for hotel management.',
+      seoTitle: "Miranda's Dashboard — Hotel Admin UI | blancodev",
+      seoDescription:
+        'A React admin dashboard for hotel management with protected login, KPI overview, reusable tables, filters and a review carousel.',
+      problem:
+        'The goal was a single dashboard to manage rooms, bookings and users.',
+      solution:
+        'I built a React admin shell with a protected login, KPI overview, reusable tables, filters and an auto-playing review carousel.',
+      results: [
+        'Protected dashboard shell',
+        'Reusable tables and filters',
+        'Desktop-first Sass layout',
+      ],
       description:
         'An admin dashboard for hotel management with data tables, filters and a polished UI.',
       category: 'Frontend',
@@ -224,6 +282,20 @@ export const info: Info = {
     },
     {
       title: "Miranda's Backend",
+      slug: 'mirandas-backend',
+      summary: 'Node.js, Express and MongoDB REST API for a hotel dashboard.',
+      seoTitle: "Miranda's Backend — Node.js REST API | blancodev",
+      seoDescription:
+        'A Node.js, Express and MongoDB REST API for rooms, bookings and users, consumed by the React hotel dashboard.',
+      problem:
+        'The goal was a reliable API for rooms, bookings and users to power the dashboard.',
+      solution:
+        'I designed REST endpoints with Express and MongoDB models, including validation and error handling.',
+      results: [
+        'REST endpoints for the hotel domain',
+        'MongoDB models for rooms, bookings and users',
+        'Consumed by the React dashboard',
+      ],
       description:
         'REST API powering the hotel dashboard, handling rooms, bookings and users.',
       category: 'Backend',
@@ -261,6 +333,20 @@ export const info: Info = {
     },
     {
       title: 'OXYGENShop',
+      slug: 'oxygenshop',
+      summary: 'Responsive e-commerce landing built with vanilla JavaScript.',
+      seoTitle: 'OXYGENShop — Responsive E-commerce Landing | blancodev',
+      seoDescription:
+        'A responsive e-commerce landing page built with vanilla HTML, CSS and JavaScript, with product cards, cart interactions and a mobile-first layout.',
+      problem:
+        'The goal was a responsive storefront that worked without a framework.',
+      solution:
+        'I built a mobile-first landing with product cards, cart interactions and vanilla JavaScript.',
+      results: [
+        'Responsive across breakpoints',
+        'Cart interactions',
+        'No framework dependencies',
+      ],
       description:
         'A responsive e-commerce landing page with a modern layout and a cart experience.',
       category: 'Landing',
@@ -277,6 +363,20 @@ export const info: Info = {
     },
     {
       title: 'Photo Dash',
+      slug: 'photo-dash',
+      summary: 'Unsplash-powered photo discovery app with search and likes.',
+      seoTitle: 'Photo Dash — Unsplash Photo App | blancodev',
+      seoDescription:
+        'A JavaScript photo discovery app powered by the Unsplash API, with live search, likes, downloads and a responsive editorial layout.',
+      problem:
+        'The goal was live photo search without managing an image library.',
+      solution:
+        'I integrated the Unsplash API and built search, like and download flows on top of a responsive editorial layout.',
+      results: [
+        'Live Unsplash search',
+        'Like and download flows',
+        'Responsive editorial layout',
+      ],
       description:
         'A photo discovery app powered by Unsplash, with search, likes and downloads.',
       category: 'Frontend',
@@ -293,6 +393,20 @@ export const info: Info = {
     },
     {
       title: 'Hotel Miranda',
+      slug: 'hotel-miranda',
+      summary: 'Multi-page marketing website for a boutique hotel.',
+      seoTitle: 'Hotel Miranda — Multi-page Hotel Website | blancodev',
+      seoDescription:
+        'A multi-page marketing site for a boutique hotel built with semantic HTML, CSS and vanilla JavaScript, with responsive navigation and content sections.',
+      problem:
+        'The goal was a multi-page site with a consistent brand across sections.',
+      solution:
+        'I built a shared layout with responsive navigation and semantic HTML, CSS and vanilla JavaScript.',
+      results: [
+        'Multi-page shared layout',
+        'Responsive navigation',
+        'Semantic HTML',
+      ],
       description:
         'A multi-page marketing site for a boutique hotel with a sophisticated look.',
       category: 'Landing',
@@ -309,6 +423,20 @@ export const info: Info = {
     },
     {
       title: 'API REST in .NET',
+      slug: 'api-rest-dotnet',
+      summary: 'C# and .NET REST API for backend fundamentals.',
+      seoTitle: 'API REST in .NET — C# Backend Case Study | blancodev',
+      seoDescription:
+        'A lightweight C# and .NET REST API built to explore backend fundamentals, with CRUD endpoints, a layered structure and REST conventions.',
+      problem:
+        'I wanted to solidify backend fundamentals with a typed, conventional API.',
+      solution:
+        'I built a C# and .NET REST API with CRUD endpoints, a layered project structure and REST conventions.',
+      results: [
+        'CRUD endpoints with C# and .NET',
+        'Layered project structure',
+        'REST conventions and backend fundamentals',
+      ],
       description:
         'A lightweight REST API built with C# and .NET to explore backend fundamentals.',
       category: 'Backend',

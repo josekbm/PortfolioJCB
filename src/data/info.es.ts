@@ -65,6 +65,20 @@ export const infoEs: Info = {
   projects: [
     {
       title: 'JM Sánchez · Cortador de Jamón',
+      slug: 'jm-sanchez',
+      summary: 'Web de una página en Astro para un cortador profesional de jamón en Sevilla.',
+      seoTitle: 'JM Sánchez · Cortador de Jamón — Caso de estudio Astro',
+      seoDescription:
+        'Cómo diseñé y construí una web rápida y accesible en Astro para un cortador de jamón en Sevilla, con presupuesto por WhatsApp y SEO estructurado.',
+      problem:
+        'El objetivo era una presencia online creíble que convirtiera visitas en solicitudes de presupuesto sin depender de un CMS pesado.',
+      solution:
+        'Diseñé una identidad editorial en negro y oro y construí una web de una página en Astro con galería, flujo de presupuesto por WhatsApp y datos estructurados.',
+      results: [
+        'Web publicada con Docker y HTTPS',
+        'Salida estática en Astro sin frameworks de cliente',
+        'Galería accesible y flujo de presupuesto por WhatsApp',
+      ],
       description:
         'Una web de una sola página para un cortador profesional de jamón en Sevilla, con servicios, presupuesto a medida, galería y contacto por WhatsApp.',
       category: 'Landing',
@@ -83,6 +97,20 @@ export const infoEs: Info = {
     },
     {
       title: "Gamer's Nest",
+      slug: 'gamers-nest',
+      summary: 'Hub en React y TypeScript para descubrir, reseñar y compartir videojuegos.',
+      seoTitle: "Gamer's Nest — App de juegos en React | blancodev",
+      seoDescription:
+        'Un hub en React y TypeScript para descubrir, reseñar y compartir videojuegos, con búsqueda, vistas de lanzamientos y despliegue estático en GitHub Pages.',
+      problem:
+        'El objetivo era un único lugar para descubrir próximos lanzamientos y compartir títulos favoritos.',
+      solution:
+        'Construí una interfaz en React y TypeScript con vistas de descubrimiento, búsqueda en vivo y una cuadrícula de juegos responsive.',
+      results: [
+        'Despliegue estático en GitHub Pages',
+        'Búsqueda y cuadrícula responsive',
+        'Componentes de tarjeta de juego reutilizables',
+      ],
       description:
         'Un hub para que los jugadores descubran, reseñen y compartan sus títulos favoritos.',
       category: 'Frontend',
@@ -99,6 +127,20 @@ export const infoEs: Info = {
     },
     {
       title: "Miranda's Dashboard",
+      slug: 'mirandas-dashboard',
+      summary: 'Panel de administración en React para gestión hotelera.',
+      seoTitle: "Miranda's Dashboard — Panel hotelero | blancodev",
+      seoDescription:
+        'Panel de administración en React para gestión hotelera con login protegido, resumen de KPIs, tablas reutilizables, filtros y carrusel de reseñas.',
+      problem:
+        'El objetivo era un panel único para gestionar habitaciones, reservas y usuarios.',
+      solution:
+        'Construí un panel en React con login protegido, resumen de KPIs, tablas reutilizables, filtros y un carrusel de reseñas automático.',
+      results: [
+        'Panel protegido con login',
+        'Tablas y filtros reutilizables',
+        'Layout Sass desktop-first',
+      ],
       description:
         'Un panel de administración para gestión hotelera con tablas, filtros y una interfaz cuidada.',
       category: 'Frontend',
@@ -114,6 +156,20 @@ export const infoEs: Info = {
     },
     {
       title: "Miranda's Backend",
+      slug: 'mirandas-backend',
+      summary: 'API REST con Node.js, Express y MongoDB para un dashboard hotelero.',
+      seoTitle: "Miranda's Backend — API REST Node.js | blancodev",
+      seoDescription:
+        'Una API REST con Node.js, Express y MongoDB para habitaciones, reservas y usuarios, consumida por el dashboard hotelero en React.',
+      problem:
+        'El objetivo era una API fiable para habitaciones, reservas y usuarios que alimentara el dashboard.',
+      solution:
+        'Diseñé endpoints REST con Express y modelos de MongoDB, incluyendo validación y manejo de errores.',
+      results: [
+        'Endpoints REST para el dominio hotelero',
+        'Modelos MongoDB para habitaciones, reservas y usuarios',
+        'Consumida por el dashboard en React',
+      ],
       description:
         'API REST que alimenta el dashboard del hotel y gestiona habitaciones, reservas y usuarios.',
       category: 'Backend',
@@ -151,6 +207,20 @@ export const infoEs: Info = {
     },
     {
       title: 'OXYGENShop',
+      slug: 'oxygenshop',
+      summary: 'Landing de e-commerce responsive con JavaScript vanilla.',
+      seoTitle: 'OXYGENShop — Landing e-commerce responsive | blancodev',
+      seoDescription:
+        'Landing de e-commerce responsive con HTML, CSS y JavaScript vanilla, tarjetas de producto, interacciones de carrito y diseño mobile-first.',
+      problem:
+        'El objetivo era un escaparate responsive que funcionara sin framework.',
+      solution:
+        'Construí una landing mobile-first con tarjetas de producto, interacciones de carrito y JavaScript vanilla.',
+      results: [
+        'Responsive en todos los breakpoints',
+        'Interacciones de carrito',
+        'Sin dependencias de framework',
+      ],
       description:
         'Una landing de e-commerce responsive con un diseño moderno y experiencia de carrito.',
       category: 'Landing',
@@ -167,6 +237,20 @@ export const infoEs: Info = {
     },
     {
       title: 'Photo Dash',
+      slug: 'photo-dash',
+      summary: 'App de descubrimiento de fotos con la API de Unsplash.',
+      seoTitle: 'Photo Dash — App de fotos Unsplash | blancodev',
+      seoDescription:
+        'App de descubrimiento de fotos en JavaScript con la API de Unsplash, búsqueda en vivo, likes, descargas y un diseño editorial responsive.',
+      problem:
+        'El objetivo era búsqueda de fotos en vivo sin gestionar una biblioteca de imágenes.',
+      solution:
+        'Integré la API de Unsplash y construí flujos de búsqueda, like y descarga sobre un diseño editorial responsive.',
+      results: [
+        'Búsqueda en vivo con Unsplash',
+        'Flujos de like y descarga',
+        'Diseño editorial responsive',
+      ],
       description:
         'Una app de descubrimiento de fotos con Unsplash, búsqueda, likes y descargas.',
       category: 'Frontend',
@@ -183,6 +267,20 @@ export const infoEs: Info = {
     },
     {
       title: 'Hotel Miranda',
+      slug: 'hotel-miranda',
+      summary: 'Web de marketing multipágina para un hotel boutique.',
+      seoTitle: 'Hotel Miranda — Web multipágina de hotel | blancodev',
+      seoDescription:
+        'Web de marketing multipágina para un hotel boutique con HTML semántico, CSS y JavaScript vanilla, navegación responsive y secciones de contenido.',
+      problem:
+        'El objetivo era una web multipágina con una marca coherente en todas las secciones.',
+      solution:
+        'Construí un layout compartido con navegación responsive y HTML semántico, CSS y JavaScript vanilla.',
+      results: [
+        'Layout compartido multipágina',
+        'Navegación responsive',
+        'HTML semántico',
+      ],
       description:
         'Una web de marketing multipágina para un hotel boutique con un aire sofisticado.',
       category: 'Landing',
@@ -198,7 +296,21 @@ export const infoEs: Info = {
       source: 'https://github.com/josekbm/Hotel-Miranda-HTML',
     },
     {
-      title: 'API REST in .NET',
+      title: 'API REST en .NET',
+      slug: 'api-rest-dotnet',
+      summary: 'API REST en C# y .NET para fundamentos de backend.',
+      seoTitle: 'API REST en .NET — Caso de estudio C# | blancodev',
+      seoDescription:
+        'Una API REST ligera en C# y .NET para explorar fundamentos de backend, con endpoints CRUD, estructura por capas y convenciones REST.',
+      problem:
+        'Quería afianzar los fundamentos de backend con una API tipada y convencional.',
+      solution:
+        'Construí una API REST en C# y .NET con endpoints CRUD, estructura por capas y convenciones REST.',
+      results: [
+        'Endpoints CRUD con C# y .NET',
+        'Estructura de proyecto por capas',
+        'Convenciones REST y fundamentos de backend',
+      ],
       description:
         'Una API REST ligera construida con C# y .NET para explorar fundamentos de backend.',
       category: 'Backend',

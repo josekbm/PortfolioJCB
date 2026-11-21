@@ -14,7 +14,7 @@ interface Entry {
 let idCounter = 0;
 
 export default function Terminal({ theme, onToggleTheme, onReboot }: AppProps) {
-  const { openApp, closeApp } = useOS();
+  const { openApp, closeApp, windows } = useOS();
   const { info, ui, lang, locale } = useI18n();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [value, setValue] = useState('');
@@ -23,6 +23,17 @@ export default function Terminal({ theme, onToggleTheme, onReboot }: AppProps) {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // The app stays mounted while its window is closed (SEO bridge), so
+  // `autoFocus` alone does not focus the input again when it is reopened.
+  const terminal = windows.terminal;
+  useEffect(() => {
+    if (!terminal.open || terminal.minimized || !terminal.focused) return;
+    // The parent Window removes `inert` in its own effect; focus on the next
+    // frame so the input is focusable again.
+    const frame = requestAnimationFrame(() => inputRef.current?.focus());
+    return () => cancelAnimationFrame(frame);
+  }, [terminal.open, terminal.minimized, terminal.focused]);
 
   useEffect(() => {
     setEntries([

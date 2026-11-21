@@ -3,7 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#0b0f14" />
+    <script>
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b0f14' : '#f6f7fb');
+      } catch (e) {}
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -12,11 +27,7 @@
     <link rel="manifest" href="/site.es.webmanifest" />
     <meta
       name="description"
-      content="Jose Carlos Blanco — Ingeniero Full Stack y de Automatización de Procesos. Desarrollo web freelance, integración de IA y automatización de procesos con n8n, React, Python y PHP."
-    />
-    <meta
-      name="keywords"
-      content="portfolio, desarrollador freelance, desarrollo web, automatización de procesos, integración de IA, n8n, javascript, react, typescript, full stack, python, php"
+      content="Ingeniero Full Stack y de Automatización en Sevilla. Desarrollo web freelance, integración de IA y automatización con n8n, React, Python y PHP."
     />
     <link rel="canonical" href="https://blancodev.es/es/" />
     <link rel="alternate" hreflang="en" href="https://blancodev.es/" />
@@ -28,14 +39,15 @@
     <meta property="og:locale:alternate" content="en_GB" />
     <meta
       property="og:title"
-      content="Jose Carlos Blanco · Ingeniero Full Stack y de Automatización de Procesos"
+      content="Jose Carlos Blanco · Ingeniero Full Stack y Automatización"
     />
     <meta
       property="og:description"
-      content="Desarrollo web freelance, integración de IA y automatización de procesos. React, Python, PHP, Docker y n8n."
+      content="Ingeniero Full Stack y de Automatización en Sevilla. Desarrollo web freelance, integración de IA y automatización con n8n, React, Python y PHP."
     />
     <meta property="og:url" content="https://blancodev.es/es/" />
     <meta property="og:image" content="https://blancodev.es/og-image-es.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -45,29 +57,235 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Jose Carlos Blanco · Ingeniero Full Stack y de Automatización de Procesos"
+      content="Jose Carlos Blanco · Ingeniero Full Stack y Automatización"
     />
     <meta
       name="twitter:description"
-      content="Desarrollo web freelance, integración de IA y automatización de procesos. React, Python, PHP, Docker y n8n."
+      content="Ingeniero Full Stack y de Automatización en Sevilla. Desarrollo web freelance, integración de IA y automatización con n8n, React, Python y PHP."
     />
     <meta name="twitter:image" content="https://blancodev.es/og-image-es.png" />
+    <meta
+      name="twitter:image:alt"
+      content="blancodev — Ingeniero Full Stack y de Automatización de Procesos"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://blancodev.es/#person",
+            "name": "Jose Carlos Blanco",
+            "givenName": "Jose Carlos",
+            "familyName": "Blanco",
+            "jobTitle": [
+              "Full Stack & Process Automation Engineer",
+              "Ingeniero Full Stack y de Automatización de Procesos"
+            ],
+            "description": "Ingeniero Full Stack y de Automatización de Procesos en Sevilla, especializado en aplicaciones web, integración de IA y automatización con n8n.",
+            "url": "https://blancodev.es/",
+            "image": "https://blancodev.es/portrait.webp",
+            "email": "jcblanco.dev@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Sevilla",
+              "addressRegion": "Andalucía",
+              "addressCountry": "ES"
+            },
+            "sameAs": [
+              "https://github.com/josekbm",
+              "https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980"
+            ],
+            "knowsAbout": [
+              "Desarrollo web",
+              "Automatización de procesos",
+              "Integración de IA",
+              "React",
+              "TypeScript",
+              "Python",
+              "PHP",
+              "Node.js",
+              "n8n",
+              "Docker",
+              "Ollama",
+              ".NET"
+            ],
+            "worksFor": { "@id": "https://blancodev.es/#business" }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://blancodev.es/#website",
+            "url": "https://blancodev.es/",
+            "name": "blancodev",
+            "description": "Portfolio y servicios de Jose Carlos Blanco, ingeniero Full Stack y de automatización de procesos en Sevilla.",
+            "inLanguage": ["en", "es"],
+            "publisher": { "@id": "https://blancodev.es/#person" }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://blancodev.es/#business",
+            "name": "blancodev",
+            "alternateName": "Jose Carlos Blanco — blancodev",
+            "url": "https://blancodev.es/",
+            "description": "Desarrollo web freelance, integración de IA y automatización de procesos para empresas y startups. React, TypeScript, Python, PHP, Node.js, Docker y n8n.",
+            "image": "https://blancodev.es/og-image-es.png",
+            "logo": "https://blancodev.es/icon-512.png",
+            "email": "jcblanco.dev@gmail.com",
+            "founder": { "@id": "https://blancodev.es/#person" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Sevilla",
+              "addressRegion": "Andalucía",
+              "addressCountry": "ES"
+            },
+            "areaServed": ["España", "Unión Europea"],
+            "sameAs": [
+              "https://github.com/josekbm",
+              "https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980"
+            ],
+            "serviceType": [
+              "Desarrollo web",
+              "Integración de IA",
+              "Automatización de procesos"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Aplicaciones web full-stack"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Automatización con IA y de procesos"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Backends y APIs REST"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Infraestructura y despliegue"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <title>Jose Carlos Blanco · Ingeniero Full Stack y de Automatización de Procesos</title>
+    <title>Jose Carlos Blanco · Ingeniero Full Stack y Automatización</title>
     <script
       defer
       src="https://stats.blancodev.es/script.js"
       data-website-id="4c1854a7-3d39-4398-8cd5-646e37ddd501"
       data-domains="blancodev.es,www.blancodev.es"
     ></script>
+    <style>
+      #nojs-fallback {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        overflow: auto;
+        padding: 56px 24px;
+        background: #080b10;
+        color: #e6e9ef;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+      }
+      #nojs-fallback > * {
+        max-width: 780px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #nojs-fallback h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+      #nojs-fallback .nojs-role {
+        color: #2ceaa3;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        margin-bottom: 1.5rem;
+      }
+      #nojs-fallback h2 {
+        font-size: 1.05rem;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        color: #2ceaa3;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+      }
+      #nojs-fallback p,
+      #nojs-fallback li {
+        color: #c9d1d9;
+      }
+      #nojs-fallback ul {
+        padding-left: 1.2rem;
+        list-style: disc;
+      }
+      #nojs-fallback a {
+        color: #2ceaa3;
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div id="nojs-fallback" lang="es">
+        <h1>Jose Carlos Blanco — Ingeniero Full Stack y de Automatización de Procesos</h1>
+        <p class="nojs-role">Sevilla, España · Disponible para nuevos proyectos</p>
+        <p>
+          Construyo aplicaciones web e integro IA para automatizar flujos de
+          trabajo complejos de principio a fin: interfaces en React y TypeScript,
+          backends en Python, PHP y Node.js, automatizaciones con n8n y LLMs
+          locales con Ollama o vLLM.
+        </p>
+        <h2>Servicios</h2>
+        <ul>
+          <li>Aplicaciones web full-stack (React, TypeScript, Node.js, Python, PHP)</li>
+          <li>Automatización con IA y de procesos con n8n, APIs y LLMs locales</li>
+          <li>Backends, APIs REST y diseño de bases de datos</li>
+          <li>Despliegue con Docker, Linux y Nginx</li>
+        </ul>
+        <h2>Trabajos seleccionados</h2>
+        <ul>
+          <li>JM Sánchez · Cortador de Jamón — web en Astro para un cortador profesional de jamón en Sevilla</li>
+          <li>Miranda's Dashboard &amp; Backend — panel de gestión hotelera con API en Node.js y MongoDB</li>
+          <li>OXYGENShop — landing de e-commerce responsive</li>
+        </ul>
+        <h2>Contacto</h2>
+        <ul>
+          <li><a href="mailto:jcblanco.dev@gmail.com">jcblanco.dev@gmail.com</a></li>
+          <li><a href="https://github.com/josekbm">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980">LinkedIn</a></li>
+          <li><a href="/CV_Jose_Carlos_Blanco.pdf">Descargar CV</a></li>
+          <li><a href="/" hreflang="en" lang="en">View in English</a></li>
+        </ul>
+        <p>
+          Esta web usa JavaScript para la experiencia de escritorio. La misma
+          información está disponible sin él.
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

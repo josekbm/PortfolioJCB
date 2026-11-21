@@ -34,6 +34,8 @@ const en = {
     curriculum: 'Curriculum',
   },
   about: {
+    heading: 'About Jose Carlos Blanco',
+    more: 'More about me',
     portraitAlt: (name: string) => `Portrait of ${name}`,
   },
   skills: {
@@ -43,6 +45,7 @@ const en = {
   projects: {
     eyebrow: '$ ls ~/projects',
     title: 'Selected work',
+    heading: 'Projects & case studies',
     intro:
       'A few products I have designed and built end to end. Open any card for the full story.',
     countLabel: 'projects',
@@ -63,6 +66,9 @@ const en = {
     caseStudy: 'case study',
     all: 'all projects',
     whatIBuilt: '$ what i built',
+    problem: 'Problem',
+    solution: 'Solution',
+    results: 'Results',
     role: 'role',
     type: 'type',
     stack: 'stack',
@@ -103,6 +109,7 @@ const en = {
     packageSubject: (title: string) => `Project inquiry — ${title} package`,
   },
   contact: {
+    headline: "Let's talk about your project",
     downloadCv: 'Download CV',
     sayHello: 'Say hello',
     viewServices: 'View services',
@@ -228,6 +235,8 @@ const es: UI = {
     curriculum: 'Currículum',
   },
   about: {
+    heading: 'Sobre Jose Carlos Blanco',
+    more: 'Más sobre mí',
     portraitAlt: (name: string) => `Retrato de ${name}`,
   },
   skills: {
@@ -237,6 +246,7 @@ const es: UI = {
   projects: {
     eyebrow: '$ ls ~/proyectos',
     title: 'Trabajo seleccionado',
+    heading: 'Proyectos y casos de estudio',
     intro:
       'Algunos productos que he diseñado y construido de principio a fin. Abre cualquier tarjeta para ver la historia completa.',
     countLabel: 'proyectos',
@@ -257,6 +267,9 @@ const es: UI = {
     caseStudy: 'caso de estudio',
     all: 'todos los proyectos',
     whatIBuilt: '$ lo que construí',
+    problem: 'Problema',
+    solution: 'Solución',
+    results: 'Resultados',
     role: 'rol',
     type: 'tipo',
     stack: 'stack',
@@ -297,6 +310,7 @@ const es: UI = {
     packageSubject: (title: string) => `Consulta de proyecto — paquete ${title}`,
   },
   contact: {
+    headline: 'Hablemos de tu proyecto',
     downloadCv: 'Descargar CV',
     sayHello: 'Hola',
     viewServices: 'Ver servicios',

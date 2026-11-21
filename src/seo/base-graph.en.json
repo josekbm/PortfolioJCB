@@ -1,0 +1,128 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://blancodev.es/#person",
+      "name": "Jose Carlos Blanco",
+      "givenName": "Jose Carlos",
+      "familyName": "Blanco",
+      "jobTitle": [
+        "Full Stack & Process Automation Engineer",
+        "Ingeniero Full Stack y de Automatización de Procesos"
+      ],
+      "description": "Full Stack and process automation engineer based in Seville, specialising in web applications, AI integration and n8n automation.",
+      "url": "https://blancodev.es/",
+      "image": "https://blancodev.es/portrait.webp",
+      "email": "jcblanco.dev@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Seville",
+        "addressRegion": "Andalusia",
+        "addressCountry": "ES"
+      },
+      "sameAs": [
+        "https://github.com/josekbm",
+        "https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980"
+      ],
+      "knowsAbout": [
+        "Web development",
+        "Process automation",
+        "AI integration",
+        "React",
+        "TypeScript",
+        "Python",
+        "PHP",
+        "Node.js",
+        "n8n",
+        "Docker",
+        "Ollama",
+        ".NET"
+      ],
+      "worksFor": {
+        "@id": "https://blancodev.es/#business"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://blancodev.es/#website",
+      "url": "https://blancodev.es/",
+      "name": "blancodev",
+      "description": "Portfolio and services of Jose Carlos Blanco, a Full Stack and process automation engineer based in Seville.",
+      "inLanguage": [
+        "en",
+        "es"
+      ],
+      "publisher": {
+        "@id": "https://blancodev.es/#person"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://blancodev.es/#business",
+      "name": "blancodev",
+      "alternateName": "Jose Carlos Blanco — blancodev",
+      "url": "https://blancodev.es/",
+      "description": "Freelance web development, AI integration and process automation for startups and small teams. React, TypeScript, Python, PHP, Node.js, Docker and n8n.",
+      "image": "https://blancodev.es/og-image.png",
+      "logo": "https://blancodev.es/icon-512.png",
+      "email": "jcblanco.dev@gmail.com",
+      "founder": {
+        "@id": "https://blancodev.es/#person"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Seville",
+        "addressRegion": "Andalusia",
+        "addressCountry": "ES"
+      },
+      "areaServed": [
+        "Spain",
+        "European Union"
+      ],
+      "sameAs": [
+        "https://github.com/josekbm",
+        "https://www.linkedin.com/in/jose-carlos-blanco-mira-59ab5980"
+      ],
+      "serviceType": [
+        "Web development",
+        "AI integration",
+        "Process automation"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full-stack web applications"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI and process automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Backends and REST APIs"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Infrastructure and deployment"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

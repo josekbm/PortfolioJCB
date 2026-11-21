@@ -1,0 +1,70 @@
+=== date ===
+Thu Nov 19 21:38:26 UTC 2026
+=== home headers ===
+HTTP/2 200 
+server: openresty
+date: Thu, 19 Nov 2026 21:38:26 GMT
+content-type: text/html
+content-length: 3452
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-d7c"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== es headers ===
+HTTP/2 200 
+server: openresty
+date: Thu, 19 Nov 2026 21:38:26 GMT
+content-type: text/html
+content-length: 3565
+last-modified: Wed, 18 Nov 2026 08:03:04 GMT
+vary: Accept-Encoding
+etag: "6afd5bb8-ded"
+cache-control: no-cache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-served-by: blancodev.es
+
+=== 404 ===
+200
+=== www ===
+200 
+=== http ===
+301 https://blancodev.es/
+=== sitemap ===
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://blancodev.es/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blancodev.es/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://blancodev.es/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://blancodev.es/" />
+  </url>
+  <url>
+    <loc>https://blancodev.es/es/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blancodev.es/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://blancodev.es/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://blancodev.es/" />
+  </url>
+</urlset>
+=== robots ===
+User-agent: *
+Allow: /
+
+Sitemap: https://blancodev.es/sitemap.xml

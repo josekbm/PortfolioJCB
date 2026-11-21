@@ -17,7 +17,8 @@ function pad(n: number) {
 
 export default function MenuBar({ theme, onToggleTheme, onReboot }: MenuBarProps) {
   const now = useClock();
-  const { info, ui, locale, switchLanguage } = useI18n();
+  const { info, ui, locale, lang } = useI18n();
+  const otherLang = lang === 'en' ? 'es' : 'en';
   const date = now
     .toLocaleDateString(locale, { weekday: 'short', day: '2-digit', month: 'short' })
     .toUpperCase();
@@ -38,14 +39,15 @@ export default function MenuBar({ theme, onToggleTheme, onReboot }: MenuBarProps
       <div className={styles.right}>
         <span className={styles.clock}>{date}</span>
         <span className={styles.clock}>{time}</span>
-        <button
+        <a
           className={styles.lang}
-          onClick={switchLanguage}
-          aria-label={ui.menu.switchLanguage}
+          href={lang === 'es' ? '/' : '/es/'}
+          hrefLang={otherLang}
+          lang={otherLang}
           title={ui.menu.switchLanguage}
         >
           {ui.menu.langShort}
-        </button>
+        </a>
         <button
           className={styles.btn}
           onClick={onToggleTheme}

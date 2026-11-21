@@ -1,0 +1,373 @@
+/* Static MPA shell: menu bar + maximized window + dock.
+   These are plain classes (not CSS modules) so the server-rendered markup
+   and the client bundle share the exact same names. */
+
+.staticShell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+}
+
+.staticMenubar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--menu-height);
+  padding: 0 0.9rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  user-select: none;
+  z-index: 200;
+}
+
+.staticBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  color: var(--text);
+}
+
+.staticBrand > svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.staticBrandName {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.staticBrandAccent {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+[data-theme='light'] .staticBrandAccent {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--accent);
+}
+
+.staticUser {
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.staticNav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.staticLang {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid rgba(44, 234, 163, 0.28);
+  background: rgba(44, 234, 163, 0.06);
+  border-radius: 6px;
+  padding: 0.18rem 0.4rem;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.staticLang:hover {
+  border-color: var(--accent);
+  background: rgba(44, 234, 163, 0.12);
+}
+
+.staticDesktop {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 1.25rem 1rem calc(var(--dock-height) + 1.25rem);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(139, 124, 255, 0.14), transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(44, 234, 163, 0.12), transparent 45%),
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    40px 40px,
+    40px 40px;
+}
+
+[data-theme='light'] .staticDesktop {
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(139, 124, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(44, 234, 163, 0.1), transparent 45%),
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+}
+
+.staticWindow {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--window-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.staticTitlebar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 0.75rem;
+  background: var(--titlebar);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.staticDots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.staticDots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.staticDots i:nth-child(1) {
+  background: var(--red);
+}
+
+.staticDots i:nth-child(2) {
+  background: var(--amber);
+}
+
+.staticDots i:nth-child(3) {
+  background: var(--green);
+}
+
+.staticWindowTitle {
+  margin-left: 1rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.staticWindowBody {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.staticBreadcrumb {
+  padding: 0.9rem 1.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.staticBreadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.staticBreadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.staticBreadcrumb li + li::before {
+  content: '›';
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.staticBreadcrumb a {
+  color: var(--accent);
+}
+
+.staticBreadcrumb [aria-current='page'] {
+  color: var(--text);
+}
+
+.staticDockWrap {
+  position: fixed;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  z-index: 150;
+}
+
+.staticDock {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  border-radius: 18px;
+  background: var(--window-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  pointer-events: auto;
+}
+
+.staticDockLink {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  color: var(--text-muted);
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.staticDockLink:hover {
+  transform: translateY(-6px) scale(1.06);
+  color: var(--text);
+  background: var(--bg-soft);
+}
+
+.staticDockLink[aria-current='page'] {
+  color: var(--accent);
+}
+
+.staticDockLink svg {
+  width: 24px;
+  height: 24px;
+}
+
+.staticDockTip {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.staticDockLink:hover .staticDockTip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.staticDockSep {
+  width: 1px;
+  height: 30px;
+  margin: 0 0.25rem;
+  align-self: center;
+  background: var(--border);
+}
+
+.staticCredit {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+[data-theme='light'] .staticCredit {
+  color: #4b5563;
+  opacity: 0.9;
+}
+
+/* Content helpers for pages that do not come from the OS apps. */
+.staticH1 {
+  font-size: clamp(1.65rem, 4vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.staticRole {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.staticInlineLink {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .staticDesktop {
+    padding: 0 0 calc(var(--dock-height) + 0.5rem);
+  }
+
+  .staticWindow {
+    max-width: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .staticUser {
+    display: none;
+  }
+
+  .staticDockLink {
+    width: 44px;
+    height: 44px;
+  }
+
+  .staticDockLink svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .staticDockTip {
+    display: none;
+  }
+
+  .staticBreadcrumb {
+    padding: 0.75rem 1rem 0;
+  }
+}

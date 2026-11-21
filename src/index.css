@@ -4,6 +4,9 @@
 
   --accent: #2ceaa3;
   --accent-2: #8b7cff;
+  /* Accent for text/icons placed on permanently dark surfaces (code panels,
+     browser mockups) even when the page theme is light. */
+  --accent-on-dark: #2ceaa3;
   --gradient: linear-gradient(135deg, #2ceaa3 0%, #8b7cff 100%);
 
   --bg: #080b10;
@@ -30,6 +33,11 @@
 }
 
 [data-theme='light'] {
+  /* Darker accents keep text and icons readable on light surfaces.
+     The CTA gradient (--gradient) stays untouched, so its dark label keeps
+     its contrast. */
+  --accent: #076b47;
+  --accent-2: #5a4bcc;
   --bg: #eef0f4;
   --bg-soft: #e4e7ee;
   --window-bg: rgba(255, 255, 255, 0.88);
@@ -119,6 +127,12 @@ button {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+[data-theme='light'] .gradient-text {
+  background-image: linear-gradient(135deg, #076b47 0%, #5a4bcc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .terminal-green {

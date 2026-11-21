@@ -9,20 +9,26 @@ interface I18nContextValue {
   info: Info;
   ui: UI;
   locale: string;
-  switchLanguage: () => void;
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
 
 function detectLanguage(): Lang {
+  if (typeof document === 'undefined') return 'en';
   const fromDocument = document.documentElement.dataset.lang;
   if (fromDocument === 'es') return 'es';
   if (fromDocument === 'en') return 'en';
   return window.location.pathname.startsWith('/es') ? 'es' : 'en';
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const lang = detectLanguage();
+export function LanguageProvider({
+  children,
+  initialLang,
+}: {
+  children: ReactNode;
+  initialLang?: Lang;
+}) {
+  const lang = initialLang ?? detectLanguage();
 
   const value = useMemo<I18nContextValue>(
     () => ({
@@ -30,9 +36,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       info: lang === 'es' ? infoEs : infoEn,
       ui: ui[lang],
       locale: lang === 'es' ? 'es-ES' : 'en-GB',
-      switchLanguage: () => {
-        window.location.assign(lang === 'es' ? '/' : '/es/');
-      },
     }),
     [lang],
   );

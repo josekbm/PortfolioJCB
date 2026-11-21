@@ -2,6 +2,21 @@
   padding: 1.5rem;
 }
 
+/* Keeps a heading available to search engines and screen readers without
+   changing the visual composition of the About window. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .scroll {
   height: 100%;
   overflow: auto;
@@ -294,7 +309,7 @@
   white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.61rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.62);
   background: rgba(255, 255, 255, 0.05);
   border-radius: 4px;
   padding: 0.08rem 0.45rem;
@@ -306,8 +321,8 @@
   font-size: 0.56rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
-  opacity: 0.8;
+  color: var(--accent-on-dark);
+  opacity: 0.9;
 }
 
 .previewTerminal .previewStatus {
@@ -366,7 +381,7 @@
 .shotOverlay svg {
   width: 16px;
   height: 16px;
-  color: var(--accent);
+  color: var(--accent-on-dark);
   transform: translateX(-4px);
   transition: transform 180ms ease;
 }
@@ -427,7 +442,7 @@
 .codeFileName svg {
   width: 12px;
   height: 12px;
-  color: var(--accent);
+  color: var(--accent-on-dark);
   flex-shrink: 0;
 }
 
@@ -436,8 +451,8 @@
   font-size: 0.56rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
-  opacity: 0.8;
+  color: var(--accent-on-dark);
+  opacity: 0.9;
 }
 
 .codeBody {
@@ -466,7 +481,7 @@
 }
 
 .codeKeyword {
-  color: var(--accent);
+  color: var(--accent-on-dark);
 }
 
 .codeComment {
@@ -970,6 +985,10 @@
   font-size: 0.64rem;
   color: var(--text-muted);
   opacity: 0.5;
+}
+
+[data-theme='light'] .serviceNum {
+  opacity: 1;
 }
 
 .serviceTitle {
